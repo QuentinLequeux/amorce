@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('fund_type');
-            $table->string('donation_type');
-            $table->text('description');
-            $table->decimal('amount', 5, 2);
+            $table->string('fund_type')->nullable();
+            $table->string('donation_type')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('amount');
             $table->timestamps();
         });
     }

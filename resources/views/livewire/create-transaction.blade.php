@@ -13,24 +13,26 @@
         <input class="border rounded mt-2 p-2"
                type="date"
                id="date"
-               wire:model.blur="date"
-               required>
+               wire:model.defer="date">
         <x-label for="description">
             Description&nbsp;*
         </x-label>
         <input class="border rounded mt-2 p-2"
                type="text"
                id="description"
-               wire:model.blur="description"
-               required
+               wire:model.defer="description"
                placeholder="Don">
+        @error('')
+        <span>
+            {{ $message }}
+        </span>
+        @enderror
         <x-label for="type">
             Type&nbsp;*
         </x-label>
         <select class="p-2 mt-2 rounded"
                 id="type"
-                required
-                wire:model.blur="donation_type">
+                wire:model.change="donation_type">
             @foreach(\App\Enums\DonationType::cases() as $donationType)
                 <option value="{{ $donationType }}">{{ $donationType }}</option>
             @endforeach
@@ -40,8 +42,7 @@
         </x-label>
         <select class="p-2 mt-2 rounded"
                 id="fund_type"
-                wire:model.blur="fund_type"
-                required>
+                wire:model.change="fund_type">
             @foreach(\App\Enums\FundType::cases() as $fundType)
                 <option value="{{ $fundType }}">{{ $fundType }}</option>
             @endforeach
@@ -52,7 +53,7 @@
         <input class="border rounded mt-2 p-2"
                type="number"
                id="amount"
-               wire:model.blur="amount"
+               wire:model.defer="amount"
                placeholder="20.00€">
         <x-button>
             Ajouter

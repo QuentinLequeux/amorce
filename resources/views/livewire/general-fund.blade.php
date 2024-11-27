@@ -13,7 +13,7 @@
                 <x-navigation-fund></x-navigation-fund>
             </div>
             <div class="p-6 mt-4 shadow-md rounded-xl font-bold text-2xl">
-                Total&nbsp;: {{ $totalGeneral }}€
+                Total&nbsp;: {{ $totalGeneral / 100 }}€
             </div>
             <div class="mt-4">
                 <h2 class="font-bold text-xl mt-2 mb-2">

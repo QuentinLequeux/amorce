@@ -29,7 +29,7 @@
             </td>
             <td>
                 <span class="{{ $transaction->amount > 0 ? "bg-green-600" : "bg-red-500"}} p-2 rounded-3xl text-white font-bold">
-                    {{ $transaction->amount }}€
+                    {{ $transaction->amount / 100 }}€
                 </span>
             </td>
             <td>

@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('finances.general') }}" class="@if (route('finances.general') === url()->current() ) bg-active @endif flex items-center text-white group px-12 rounded-r-full py-4" title="Vers la page des finances">
+            <a href="{{ route('finances.general') }}" class="{{ request()->is('finances','finances'.'/*')?'bg-active':'' }} flex items-center text-white group px-12 rounded-r-full py-4" title="Vers la page des finances">
                 <svg class="mr-2 stroke-white" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32" fill="none">
                     <path d="M29 8H3C2.44772 8 2 8.44772 2 9V23C2 23.5523 2.44772 24 3 24H29C29.5523 24 30 23.5523 30 23V9C30 8.44772 29.5523 8 29 8Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16 20C18.2091 20 20 18.2091 20 16C20 13.7909 18.2091 12 16 12C13.7909 12 12 13.7909 12 16C12 18.2091 13.7909 20 16 20Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

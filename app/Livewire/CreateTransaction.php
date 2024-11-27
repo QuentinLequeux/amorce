@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Transaction;
-use Illuminate\Http\Request;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -41,15 +40,22 @@ class CreateTransaction extends Component
             'amount' => 'required|numeric',
         ];
     }
-    public function render()
-    {
-        return view('livewire.create-transaction');
-    }
 
-    public function store()
-    {
-        dd($this->validate());
+//    public function render()
+//    {
+//        return view('livewire.create-transaction');
+//    }
 
-        Transaction::create($this->all());
+    public function store(): void
+    {
+        $this->validate();
+
+        Transaction::create([
+            'date' => $this->date,
+            'description' => $this->description,
+            'donation_type' => $this->donation_type,
+            'fund_type' => $this->fund_type,
+            'amount' => $this->amount,
+        ]);
     }
 }

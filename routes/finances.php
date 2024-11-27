@@ -9,23 +9,26 @@ use App\Livewire\SpecificFund;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
-    Route::get('/finances', [TransactionController::class, 'index'])
-        ->name('finances.index');
+//    Route::get('/finances', [TransactionController::class, 'index'])
+//        ->name('finances.index');
 
-    Route::get('/finances/create/manual', [TransactionController::class, 'create'])
-        ->name('finances.manual.create');
+//    Route::get('/finances/create/manual', [TransactionController::class, 'create'])
+//        ->name('finances.manual.create');
 
     Route::get('/finances/create/manual', CreateTransaction::class)
         ->name('finances.create');
 
-    Route::post('/finances/manual', [TransactionController::class, 'store'])
-        ->name('transaction.store');
+    Route::post('/finances/create', [CreateTransaction::class, 'store'])
+        ->name('finances.store');
 
-    Route::get('/finances/create/import', [CsvImportController::class, 'create'])
-        ->name('finances.import.create');
+//    Route::post('/finances/manual', [TransactionController::class, 'store'])
+//        ->name('transaction.store');
 
-    Route::post('/finances/import', [CsvImportController::class, 'store'])
-        ->name('csv-import.store');
+//    Route::get('/finances/create/import', [CsvImportController::class, 'create'])
+//        ->name('finances.import.create');
+
+//    Route::post('/finances/import', [CsvImportController::class, 'store'])
+//        ->name('csv-import.store');
 
     Route::get('/finances/general', GeneralFund::class)
         ->name('finances.general');

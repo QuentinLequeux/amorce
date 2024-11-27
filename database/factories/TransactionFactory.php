@@ -12,7 +12,11 @@ class TransactionFactory extends Factory
     public function definition(): array
     {
         return [
-
+            'date' => $this->faker->date(),
+            'fund_type' => 'Fond général',
+            'donation_type' => 'Virement',
+            'description' => $this->faker->text(),
+            'amount' => $this->faker->numberBetween(-10000,100000),
         ];
     }
 }

@@ -22,28 +22,30 @@ class DatabaseSeeder extends Seeder
             'email' => 'quentin.lequeux@student.hepl.be',
         ]);
 
-        Transaction::factory(20)->create([
-            'date' => now(),
-            'fund_type' => 'Fond général',
-            'donation_type' => 'Virement',
-            'description' => 'Don',
-            'amount' => 10,
-        ]);
+        Transaction::factory(10)->create();
 
-        Transaction::factory(20)->create([
-            'date' => now(),
-            'fund_type' => 'Fond de fonctionnement',
-            'donation_type' => 'Virement',
-            'description' => 'Don',
-            'amount' => 20,
-        ]);
-
-        Transaction::factory(20)->create([
-            'date' => now(),
-            'fund_type' => 'Fond spécifique',
-            'donation_type' => 'Liquide',
-            'description' => 'Don',
-            'amount' => 5,
-        ]);
+//        Transaction::factory(20)->create([
+//            'date' => now(),
+//            'fund_type' => 'Fond général',
+//            'donation_type' => 'Virement',
+//            'description' => 'Don',
+//            'amount' => 10,
+//        ]);
+//
+//        Transaction::factory(20)->create([
+//            'date' => now(),
+//            'fund_type' => 'Fond de fonctionnement',
+//            'donation_type' => 'Virement',
+//            'description' => 'Don',
+//            'amount' => 20,
+//        ]);
+//
+//        Transaction::factory(20)->create([
+//            'date' => now(),
+//            'fund_type' => 'Fond spécifique',
+//            'donation_type' => 'Liquide',
+//            'description' => 'Don',
+//            'amount' => 5,
+//        ]);
     }
 }
