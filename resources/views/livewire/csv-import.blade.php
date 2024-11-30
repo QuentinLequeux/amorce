@@ -1,23 +1,4 @@
 <div>
-    <div x-data="{ open: false }"
-         x-init="
-              $wire.on('importCompleted', () => {
-              open = true;
-              setTimeout(() => { open = false }, 3000);
-              })
-              "
-         x-show="open"
-         class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
-         x-transition:enter="transition transform ease-out duration-300"
-         x-transition:enter-start="opacity-0 scale-95"
-         x-transition:enter-end="opacity-100 scale-100"
-         x-transition:leave="transition transform ease-in duration-300"
-         x-transition:leave-start="opacity-100 scale-100"
-         x-transition:leave-end="opacity-0 scale-95">
-        <div class="bg-white p-6 rounded shadow-xl">
-            <p>Hello&nbsp;</p>
-        </div>
-    </div>
     <div class="absolute right-0 bg-white shadow-xl"
          x-show="open"
          @click.away="open = false"
@@ -41,5 +22,30 @@
                 Envoyer
             </x-button>
         </form>
+    </div>
+    {{--    @if(session()->has('message'))--}}
+    {{--        <div class="fixed bottom-1/2 left-1/2 p-12 bg-green-600 shadow-xl rounded"--}}
+    {{--             x-show="open"--}}
+    {{--             x-transition.duration.500ms--}}
+    {{--             @click.away="open = false">--}}
+    {{--            <p class="text-center font-bold">--}}
+    {{--                {{ session('message') }}--}}
+    {{--            </p>--}}
+    {{--        </div>--}}
+    {{--    @endif--}}
+    <div x-data="{ open: {{session('message') ? 'true' : 'false'}} }"
+         x-init="if (open) { timer = setTimeout(() => open = false, 3000);}">
+        <div class="fixed top-1/4 left-1/2 px-12 p-6 bg-green-600 shadow-xl rounded"
+             x-show="open"
+             x-transition:enter="transition transform ease-in duration-500"
+             x-transition:enter-start="opacity-0 translate-y-20"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition transform ease-in duration-500"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 translate-y-20"
+            {{--     x-transition.duration.500ms--}}
+            {{--     @click.away="open = false"--}}>
+            <p class="text-center font-bold">{{ session('message') }}</p>
+        </div>
     </div>
 </div>

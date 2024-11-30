@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Transaction;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class TransactionsList extends Component
@@ -13,7 +14,9 @@ class TransactionsList extends Component
     #[Computed]
     public function transactions()
     {
-        return Transaction::where('fund_type', $this->fundType)->paginate(7);
+        return Transaction::where('fund_type', $this->fundType)
+            ->orderBy('date', 'desc')
+            ->paginate(7);
     }
 
     public function render()
@@ -23,9 +26,13 @@ class TransactionsList extends Component
 
     public function destroy(Transaction $transaction)
     {
-        $transaction = Transaction::find($transaction->id);
+//        $transaction = Transaction::find($transaction->id);
         $transaction->delete();
-
-        return to_route('finances.operating');
+//        return to_route('finances.operating');
+    }
+    #[On('transactionDeleted')]
+    public function resetTransactionList()
+    {
+        unset($this->transactions);
     }
 }

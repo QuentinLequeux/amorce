@@ -46,7 +46,7 @@ class CreateTransaction extends Component
 //        return view('livewire.create-transaction');
 //    }
 
-    public function store(): void
+    public function store()
     {
         $this->validate();
 
@@ -57,5 +57,9 @@ class CreateTransaction extends Component
             'fund_type' => $this->fund_type,
             'amount' => $this->amount,
         ]);
+
+//        $this->dispatch('close');
+
+        return redirect(route('finances.general'));
     }
 }

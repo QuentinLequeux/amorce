@@ -1,4 +1,5 @@
-<div class="p-6 shadow-xl h-fit absolute right-0 bg-white" x-show="open"
+<div class="p-6 shadow-xl h-fit absolute right-0 bg-white"
+     x-show="open"
      @click.away="open = false"
      x-transition:enter="transition-transform transition-opacity ease-out duration-300"
      x-transition:enter-start="opacity-0 transform translate-x-2"
@@ -22,7 +23,7 @@
                id="description"
                wire:model.defer="description"
                placeholder="Don">
-        @error('')
+        @error('description')
         <span>
             {{ $message }}
         </span>
@@ -55,6 +56,11 @@
                id="amount"
                wire:model.defer="amount"
                placeholder="20.00€">
+        @error('amount')
+        <span>
+            {{ $message }}
+        </span>
+        @enderror
         <x-button>
             Ajouter
         </x-button>

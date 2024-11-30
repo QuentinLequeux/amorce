@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -46,7 +45,11 @@ class CsvImport extends Component
             }
             fclose($handle);
         }
+
         $this->dispatch('importFinished');
-        return redirect(route('finances.general'));
+
+        session()->flash('message', 'Data imported successfully.');
+
+        return $this->redirect(route('finances.general'), navigate: true);
     }
 }
