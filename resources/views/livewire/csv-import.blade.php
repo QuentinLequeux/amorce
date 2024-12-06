@@ -1,5 +1,5 @@
 <div>
-    <div class="absolute right-0 bg-white shadow-xl"
+    <div class="absolute right-0 bg-white shadow-xl dark:text-black rounded"
          x-show="open"
          @click.away="open = false"
          x-transition:enter="transition-transform transition-opacity ease-out duration-300"

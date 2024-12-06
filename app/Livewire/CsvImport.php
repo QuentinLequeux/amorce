@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\Transaction;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -34,14 +34,12 @@ class CsvImport extends Component
                 $date = Carbon::createFromFormat('d-m-Y', $data[0])->format('Y-m-d');
                 $amount = str($data[2])->replace(',', '')->replace('.', '');
 
-                DB::table('transactions')->insert([
+                Transaction::create([
                     'date' => $date,
                     'amount' => $amount,
                     'description' => $data[8],
                     'fund_type' => 'Fond général'
                 ]);
-
-                $row++;
             }
             fclose($handle);
         }

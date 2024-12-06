@@ -1,4 +1,4 @@
-<div class="p-6 shadow-xl h-fit absolute right-0 bg-white"
+<div class="p-6 shadow-xl h-fit absolute right-0 bg-white dark:text-black rounded"
      x-show="open"
      @click.away="open = false"
      x-transition:enter="transition-transform transition-opacity ease-out duration-300"

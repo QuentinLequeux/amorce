@@ -20,7 +20,14 @@ class DeleteModal extends Component
 
     public function destroy(Transaction $transaction)
     {
+//        $user = auth()->user();
+//
+//        if (!$user->hasRole('admin')) {
+//            abort(403,'Not allowed');
+//        }
 //        dd($this->transactionId);
+        $this->authorize('delete', $transaction);
+
         Transaction::find($this->transactionId)->delete();
         $this->dispatch('transactionDeleted');
 //        $transaction = Transaction::all();

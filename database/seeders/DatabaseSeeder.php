@@ -15,14 +15,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call([RolesAndPermissionsSeeder::class]);
 
         User::factory()->create([
             'name' => 'Quentin',
             'email' => 'quentin.lequeux@student.hepl.be',
-        ]);
+        ])->each(function ($user) {
+            $user->assignRole('user');
+        });
 
         Transaction::factory(10)->create();
+        Transaction::factory()->create([
+            'date' => now(),
+            'description' => 'Don',
+            'donation_type' => 'Liquide',
+            'fund_type' => 'Fond général',
+            'amount' => 22200,
+        ]);
 
 //        Transaction::factory(20)->create([
 //            'date' => now(),

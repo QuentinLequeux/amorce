@@ -11,9 +11,9 @@ class Transaction extends Model
 
     protected $fillable = [
         'date',
-        'fund_type',
-        'donation_type',
         'description',
+        'donation_type',
+        'fund_type',
         'amount',
     ];
 

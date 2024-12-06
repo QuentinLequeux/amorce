@@ -12,8 +12,9 @@
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
-<body>
+<body x-data="{ darkMode: $persist(false) }" :class="{ 'dark': darkMode === true }" class="antialiased">
 {{ $slot }}
 @livewire('delete-modal')
+@livewire('edit-transaction')
 </body>
 </html>
