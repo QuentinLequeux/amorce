@@ -12,10 +12,18 @@ class CsvImport extends Component
     use WithFileUploads;
 
     public $csv;
+    public $fileSize;
 
     public function render()
     {
         return view('livewire.csv-import');
+    }
+
+    public function updatedCsv()
+    {
+        if ($this->csv) {
+            $this->fileSize = number_format($this->csv->getSize() / 1024, 2);
+        }
     }
 
     public function import()

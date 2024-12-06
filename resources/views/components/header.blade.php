@@ -1,6 +1,6 @@
 <header class="flex fixed w-full bg-white dark:bg-gray-900 text-black dark:text-white">
-    <div class="bg-logo px-6 py-4 w-56 flex justify-center shrink-0">
-        <a href="/" title="Vers la page d'accueil" class="text-white font-bold text-2xl">Amorce</a>
+    <div class="bg-yellow px-6 py-4 w-56 flex justify-center shrink-0">
+        <a href="/" title="Vers la page d'accueil" class="text-black font-bold text-2xl">Amorce</a>
     </div>
     <div class="py-4 px-12 w-full flex justify-end shadow-md">
         <livewire:theme-switcher/>

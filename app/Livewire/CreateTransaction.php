@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class CreateTransaction extends Component
 {
-    //public Transaction $transaction;
+    public Transaction $transaction;
     #[Validate]
     public $date;
     #[Validate]
@@ -20,15 +20,15 @@ class CreateTransaction extends Component
     #[Validate]
     public $amount;
 
-//    public function setTransaction($transaction)
-//    {
-//        $this->transaction = $transaction;
-//        $this->date = $transaction->date;
-//        $this->description = $transaction->description;
-//        $this->donation_type = $transaction->donation_type;
-//        $this->fund_type = $transaction->fund_type;
-//        $this->amount = $transaction->amount;
-//    }
+    public function mount(Transaction $transaction)
+    {
+        $this->transaction = $transaction;
+        $this->date = $transaction->date;
+        $this->description = $transaction->description;
+        $this->donation_type = $transaction->donation_type;
+        $this->fund_type = $transaction->fund_type;
+        $this->amount = $transaction->amount;
+    }
 
     public function rules()
     {
@@ -48,17 +48,17 @@ class CreateTransaction extends Component
 
     public function store()
     {
+        $this->authorize('create', $this->transaction);
+
         $this->validate();
 
-        Transaction::create([
+        $this->transaction->create([
             'date' => $this->date,
             'description' => $this->description,
             'donation_type' => $this->donation_type,
             'fund_type' => $this->fund_type,
             'amount' => $this->amount,
         ]);
-
-//        $this->dispatch('close');
 
         return redirect(route('finances.general'));
     }

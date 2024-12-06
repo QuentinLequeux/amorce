@@ -18,7 +18,8 @@ export default {
             colors: {
                 sidebar: "#0077C1",
                 logo: "#000ACB",
-                yellow: "#FFBC00",
+                yellow: "#E5BB0B",
+                yellow2: "#FBD538",
                 active: "#0099FF",
             },
             screens: {

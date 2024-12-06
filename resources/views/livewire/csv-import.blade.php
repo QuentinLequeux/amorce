@@ -17,7 +17,14 @@
                    type="file"
                    id="csv"
                    wire:model="csv"
-                   accept=".csv">
+                   accept=".csv"
+                   required>
+            @if($fileSize)
+                <p>Taille du fichier : {{ $fileSize }} KB</p>
+            @endif
+            @error('csv')
+            <p class="text-red-500">{{ $message }}</p>
+            @enderror
             <x-button>
                 Envoyer
             </x-button>

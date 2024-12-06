@@ -21,6 +21,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Quentin',
             'email' => 'quentin.lequeux@student.hepl.be',
         ])->each(function ($user) {
+            $user->assignRole('admin');
+        });
+
+        User::factory()->create([
+            'name' => 'Nicolas',
+            'email' => 'quent789@gmail.com',
+        ])->each(function ($user) {
             $user->assignRole('user');
         });
 

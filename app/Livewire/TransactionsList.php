@@ -2,17 +2,19 @@
 
 namespace App\Livewire;
 
+use AllowDynamicProperties;
 use App\Models\Transaction;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class TransactionsList extends Component
+#[AllowDynamicProperties] class TransactionsList extends Component
 {
     public $fundType = 'Fond général';
     public $transaction;
     public $sortField = 'date';
     public $sortDirection = 'desc';
+    public $perPage = 7;
 
     public function mount()
     {
@@ -22,7 +24,9 @@ class TransactionsList extends Component
     public function loadTransactions()
     {
         // Charger les transactions avec tri dynamique
-        $this->transaction = Transaction::orderBy($this->sortField, $this->sortDirection)->get();
+        $this->transactions = Transaction::where('fund_type', $this->fundType)
+            ->orderBy($this->sortField, $this->sortDirection)
+            ->paginate($this->perPage);
     }
 
     public function sortBy($field)

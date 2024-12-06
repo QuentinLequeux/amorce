@@ -24,18 +24,19 @@
                wire:model.defer="description"
                placeholder="Don">
         @error('description')
-        <span>
+        <span class="text-red-500">
             {{ $message }}
         </span>
         @enderror
-        <x-label for="type">
+        <x-label for="donation_type">
             Type&nbsp;*
         </x-label>
         <select class="p-2 mt-2 rounded"
-                id="type"
-                wire:model.change="donation_type">
+                id="donation_type"
+                wire:model.defer="donation_type">
+            <option>--S&eacute;lectionner--</option>
             @foreach(\App\Enums\DonationType::cases() as $donationType)
-                <option value="{{ $donationType }}">{{ $donationType }}</option>
+                <option value="{{ $donationType->value }}">{{ $donationType->value }}</option>
             @endforeach
         </select>
         <x-label for="fund_type">
@@ -43,9 +44,10 @@
         </x-label>
         <select class="p-2 mt-2 rounded"
                 id="fund_type"
-                wire:model.change="fund_type">
+                wire:model.defer="fund_type">
+            <option>--S&eacute;lectionner--</option>
             @foreach(\App\Enums\FundType::cases() as $fundType)
-                <option value="{{ $fundType }}">{{ $fundType }}</option>
+                <option value="{{ $fundType->value }}">{{ $fundType->value }}</option>
             @endforeach
         </select>
         <x-label for="amount">
@@ -57,7 +59,7 @@
                wire:model.defer="amount"
                placeholder="20.00€">
         @error('amount')
-        <span>
+        <span class="text-red-500">
             {{ $message }}
         </span>
         @enderror

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->date('date')->default(now());
-            $table->string('fund_type')->nullable();
-            $table->string('donation_type')->nullable();
+            $table->string('fund_type');
+            $table->string('donation_type');
             $table->text('description')->nullable();
             $table->integer('amount')->default(0);
             $table->timestamps();

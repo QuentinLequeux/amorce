@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Transaction;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class TransactionPolicy
 {
@@ -29,7 +28,7 @@ class TransactionPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
