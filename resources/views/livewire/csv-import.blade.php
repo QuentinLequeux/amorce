@@ -1,7 +1,7 @@
 <div>
     <div class="absolute right-0 bg-white shadow-xl dark:text-black rounded"
          x-show="open"
-         @click.away="open = false"
+         @click.away="open = false; $wire.set('csv', null); $wire.set('fileSize', null);"
          x-transition:enter="transition-transform transition-opacity ease-out duration-300"
          x-transition:enter-start="opacity-0 transform translate-x-2"
          x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -23,7 +23,7 @@
                 <p>Taille du fichier : {{ $fileSize }} KB</p>
             @endif
             @error('csv')
-            <p class="text-red-500">{{ $message }}</p>
+                <p class="text-red-500">{{ $message }}</p>
             @enderror
             <x-button>
                 Envoyer
