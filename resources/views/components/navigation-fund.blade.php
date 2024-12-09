@@ -5,14 +5,14 @@
    @click="active = 1">
     Fond g&eacute;n&eacute;ral
 </a>
-<a class="hover:text-sidebar font-medium dark:text-white dark:hover:text-sidebar"
+<a class="hover:text-sidebar font-medium dark:text-white dark:hover:text-yellow2"
    :class="active === 2 ? 'text-sidebar dark:text-sidebar border-b-2 border-sidebar': 'text-black'"
    href="{{ route('finances.operating') }}" wire:navigate
    title="Vers le fond de fonctionnement"
    @click="active = 2">
     Fond de fonctionnement
 </a>
-<a class="hover:text-sidebar font-medium dark:text-white dark:hover:text-sidebar"
+<a class="hover:text-sidebar font-medium dark:text-white dark:hover:text-yellow2"
    :class="active === 3 ? 'text-sidebar dark:text-sidebar border-b-2 border-sidebar': 'text-black'"
    href="{{ route('finances.specific') }}" wire:navigate
    title="Vers le fond spécifique"
@@ -20,7 +20,7 @@
     Fond sp&eacute;cifique
 </a>
 @role('admin')
-<a class="font-medium hover:text-sidebar" href="#">
+<a class="font-medium hover:text-sidebar dark:hover:text-yellow2" href="#">
     +&nbsp;Cr&eacute;er un fond
 </a>
 @endrole

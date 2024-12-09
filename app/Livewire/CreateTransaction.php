@@ -23,7 +23,7 @@ class CreateTransaction extends Component
     public function mount(Transaction $transaction)
     {
         $this->transaction = $transaction;
-        $this->date = $transaction->date;
+        $this->date = $transaction->date ?? now()->format('Y-m-d');
         $this->description = $transaction->description;
         $this->donation_type = $transaction->donation_type;
         $this->fund_type = $transaction->fund_type;

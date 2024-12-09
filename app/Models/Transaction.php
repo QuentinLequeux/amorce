@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Concerns\GetTotalByFundType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
     use HasFactory;
+    use GetTotalByFundType;
 
     protected $fillable = [
         'date',
@@ -17,8 +19,8 @@ class Transaction extends Model
         'amount',
     ];
 
-    public static function getTotalByFundType($fundType)
-    {
-        return self::where('fund_type', $fundType)->sum('amount');
-    }
+//    public static function getTotalByFundType($fundType)
+//    {
+//        return self::where('fund_type', $fundType)->sum('amount');
+//    }
 }

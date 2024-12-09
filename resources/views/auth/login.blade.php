@@ -51,7 +51,9 @@
             </div>
         </div>
         <label for="remember">
-            <input type="checkbox" id="remember">
+            <input type="checkbox"
+                   id="remember"
+                   name="remember_token">
             <span>Remember&nbsp;me</span>
         </label>
         <div class="flex justify-center mt-6 mb-4">
