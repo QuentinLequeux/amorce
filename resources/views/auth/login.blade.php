@@ -53,7 +53,7 @@
         <label for="remember">
             <input type="checkbox"
                    id="remember"
-                   name="remember_token">
+                   name="remember">
             <span>Remember&nbsp;me</span>
         </label>
         <div class="flex justify-center mt-6 mb-4">

@@ -24,12 +24,12 @@ class LoginController extends Controller
         $remember = $request->has('remember_token');
 
 //        if ($remember) {
-//            \Config::set('session.lifetime', 60 * 24);
+//            \Config::set('session.lifetime', 60 * 24); // 1 jour
 //        } else {
-//            \Config::set('session.lifetime', 10);
+//            \Config::set('session.lifetime', 10); // 10 minutes
 //        }
 
-        if (Auth::attempt($credentials, $remember)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('/');
