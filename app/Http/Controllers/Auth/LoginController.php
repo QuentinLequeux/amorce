@@ -21,16 +21,18 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $remember = $request->has('remember_token');
+        $remember = $request->has('remember');
 
 //        if ($remember) {
-//            \Config::set('session.lifetime', 60 * 24); // 1 jour
+//            \Config::set('session.remember_me_lifetime', 1440); // 1 jour
 //        } else {
 //            \Config::set('session.lifetime', 10); // 10 minutes
 //        }
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
+
+//            dd(cookie()->getQueuedCookies());
 
             return redirect()->intended('/');
         }
