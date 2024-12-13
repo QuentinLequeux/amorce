@@ -16,5 +16,6 @@
 {{ $slot }}
 @livewire('delete-modal')
 @livewire('edit-transaction')
+@livewire('create-fund')
 </body>
 </html>

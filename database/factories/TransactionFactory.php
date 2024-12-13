@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Fund;
 use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,7 +14,8 @@ class TransactionFactory extends Factory
     {
         return [
             'date' => $this->faker->date(),
-            'fund_type' => 'Fond général',
+//            'fund_type' => 'Fond général',
+            'fund_id' => Fund::all()->random()->id,
             'donation_type' => 'Virement',
             'description' => $this->faker->text(),
             'amount' => $this->faker->numberBetween(-10000,100000),

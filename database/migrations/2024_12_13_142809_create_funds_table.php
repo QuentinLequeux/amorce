@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('funds', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->default(now());
-            $table->string('fund_type')->nullable();
-            $table->string('donation_type')->nullable();
-            $table->text('description')->nullable();
-            $table->integer('amount')->default(0);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('funds');
     }
 };

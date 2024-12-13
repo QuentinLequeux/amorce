@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\GeneralFund;
 use App\Models\Transaction;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
@@ -58,12 +59,16 @@ test('a user can delete transaction', function () {
 
 test('a user cant delete transaction', function () {
     $role = Role::create(['name' => 'user']);
-    $this->user = User::factory()->create();
-    $this->user->assignRole($role);
-
+    $user = User::factory()->create();
+    $user->assignRole($role);
     $transaction = Transaction::factory()->create();
 
-    $response = $this->delete(route('finances.general.destroy', $transaction));
-
-    $response->assertStatus(403);
+    Livewire::actingAs($user)
+        ->test(GeneralFund::class)
+        ->call('destroy', $transaction->id)
+        ->assertForbidden();
 });
+
+//    $response = $this->delete(route('finances.general.destroy', $transaction));
+
+//    $response->assertStatus(403);

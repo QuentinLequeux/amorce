@@ -23,7 +23,7 @@ export default {
                 active: "#0099FF",
             },
             screens: {
-                'mobile': '700px',
+                'mobile': '900px',
             },
         },
     },

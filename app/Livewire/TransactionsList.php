@@ -8,9 +8,10 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-#[AllowDynamicProperties] class TransactionsList extends Component
+#[AllowDynamicProperties]
+class TransactionsList extends Component
 {
-    public $fundType = 'Fond général';
+    public $fundId = 3  ;
     public $transaction;
     public $sortField = 'date';
     public $sortDirection = 'desc';
@@ -24,7 +25,7 @@ use Livewire\Component;
     public function loadTransactions()
     {
         // Charger les transactions avec tri dynamique
-        $this->transactions = Transaction::where('fund_type', $this->fundType)
+        $this->transactions = Transaction::where('fund_id', $this->fundId)
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate($this->perPage);
     }
@@ -45,7 +46,7 @@ use Livewire\Component;
     #[Computed]
     public function transactions()
     {
-        return Transaction::where('fund_type', $this->fundType)
+        return Transaction::where('fund_id', $this->fundId)
             ->orderBy('date', 'desc')
             ->paginate(7);
     }

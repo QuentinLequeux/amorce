@@ -4,8 +4,8 @@ namespace App\Concerns;
 
 trait GetTotalByFundType
 {
-    public static function getTotalByFundType($fundType)
+    public static function getTotalByFundId($fundId)
     {
-        return self::where('fund_type', $fundType)->sum('amount');
+        return self::where('fund_id', $fundId)->sum('amount');
     }
 }

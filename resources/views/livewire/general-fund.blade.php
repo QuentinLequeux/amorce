@@ -9,7 +9,7 @@
                 </x-title>
                 <x-navigation></x-navigation>
             </div>
-            <div class="flex gap-6 mt-4" x-data="{ active:1 }">
+            <div class="flex gap-6 mt-4 overflow-x-auto" x-data="{ active:1 }">
                 <x-navigation-fund></x-navigation-fund>
             </div>
             <div class="p-6 mt-4 shadow-md rounded-xl font-bold text-2xl">

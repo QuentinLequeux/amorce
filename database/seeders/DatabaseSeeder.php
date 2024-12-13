@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\FundType;
+use App\Models\Fund;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -31,12 +33,20 @@ class DatabaseSeeder extends Seeder
             $user->assignRole('user');
         });
 
-        Transaction::factory(10)->create();
+        foreach (FundType::cases() as $fund) {
+            Fund::factory()->create([
+                'name' => $fund->value
+            ]);
+        }
+//            'name' => FundType::GeneralFund,
+
+//        Transaction::factory(10)->create();
         Transaction::factory()->create([
             'date' => now(),
             'description' => 'Don',
             'donation_type' => 'Liquide',
-            'fund_type' => 'Fond général',
+            'fund_id' => Fund::all()->random()->id,
+//            'fund_type' => 'Fond général',
             'amount' => 22200,
         ]);
 

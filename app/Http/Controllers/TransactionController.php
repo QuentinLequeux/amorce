@@ -10,7 +10,7 @@ class TransactionController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $totalGeneral = Transaction::getTotalByFundType('Fond général');
+        $totalGeneral = Transaction::getTotalByFundId('Fond général');
         //$transactions = Transaction::all();
         $transactions = Transaction::orderBy('date', 'desc')->paginate(7);
         $fund = Transaction::where('fund_type', 'Fond de fonctionnement')->get();
@@ -31,7 +31,7 @@ class TransactionController extends Controller
 
         Transaction::create($validated);
 
-        $totalGeneral = Transaction::getTotalByFundType('Fond général');
+        $totalGeneral = Transaction::getTotalByFundId('Fond général');
         $transactions = Transaction::orderBy('date', 'desc')->paginate(7);
 
         return view('livewire.general-fund', compact('user', 'totalGeneral', 'transactions'));

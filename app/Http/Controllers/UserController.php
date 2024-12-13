@@ -13,16 +13,15 @@ class UserController extends Controller
         $user = User::find(1);
 
 //        $roleUser = Role::firstOrCreate(['name' => 'user']);
-//        $roleAdmin = Role::firstOrCreate(['name' => 'admin']);
+        $roleAdmin = Role::firstOrCreate(['name' => 'admin']);
 //        $roleAccountant = Role::firstOrCreate(['name' => 'accountant']);
 
 //        $permission = Permission::firstOrCreate(['name' => 'delete transaction']);
 
-//        $user->syncRoles();
-//        $user->syncRoles();
-//        $user->assignRole($roleUser);
+        $user->syncRoles();
+        $user->assignRole($roleAdmin);
 
-//        $user->syncPermissions();
+        $user->syncPermissions();
 //        $user->givePermissionTo($permission);
 
         dd($user->getRoleNames(), $user->getPermissionsViaRoles());
