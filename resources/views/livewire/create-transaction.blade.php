@@ -61,7 +61,8 @@
                    type="number"
                    id="amount"
                    wire:model.defer="amount"
-                   placeholder="20.00€">
+                   placeholder="20.00€"
+                   step=".01">
             <span class="absolute right-10 top-1/3">€</span>
         </div>
         @error('amount')

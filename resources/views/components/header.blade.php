@@ -2,7 +2,7 @@
     <div class="bg-yellow px-6 py-4 w-56 flex justify-center shrink-0 max-mobile:w-14">
         <a href="/" title="Vers la page d'accueil" class="text-black font-bold text-2xl max-mobile:hidden">Amorce</a>
     </div>
-    <div class="py-4 px-12 w-full flex justify-end shadow-md max-mobile:justify-between">
+    <div class="py-4 px-12 w-full flex justify-end shadow-md max-mobile:justify-end">
         <livewire:theme-switcher/>
         <div class="relative" x-data="{ open: false }">
             <button class="mr-10" type="button" @click="open = ! open">

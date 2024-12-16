@@ -14,7 +14,7 @@ class TransactionsList extends Component
 {
     use WithPagination;
 
-    public $fundId = 3;
+    public $fundId = 1;
     public $transaction;
     public $sortField = 'date';
     public $sortDirection = 'desc';

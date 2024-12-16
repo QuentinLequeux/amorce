@@ -14,11 +14,10 @@ class TransactionFactory extends Factory
     {
         return [
             'date' => $this->faker->date(),
-//            'fund_type' => 'Fond général',
             'fund_id' => Fund::all()->random()->id,
             'donation_type' => 'Virement',
             'description' => $this->faker->text(),
-            'amount' => $this->faker->numberBetween(-10000,100000),
+            'amount' => $this->faker->numberBetween(-1000,10000),
         ];
     }
 }

@@ -16,7 +16,7 @@ class GeneralFund extends Component
         $user = auth()->user();
         $totalGeneral = Transaction::getTotalByFundId(1);
 //        $transactions = Transaction::orderBy('date', 'desc')->paginate(7);
-        $transactions = Transaction::where('fund_id', 1)->orderBy('date', 'ASC')->paginate(7);
+        $transactions = Transaction::where('fund_id', 3)->orderBy('date', 'ASC')->paginate(7);
         return view('livewire.general-fund', compact('user', 'totalGeneral', 'transactions'));
     }
 

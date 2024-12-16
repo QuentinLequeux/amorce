@@ -29,9 +29,11 @@ class CsvImport extends Component
 
     public function import()
     {
-        if (!$this->csv) {
-            dd('Aucun fichier');
-        }
+        $this->authorize('create', Transaction::class);
+
+//        if (!$this->csv) {
+//            dd('Aucun fichier');
+//        }
 
         $this->validate([
             'csv' => 'required|file|mimes:csv|max:2048'

@@ -33,7 +33,7 @@
             @forelse($this->transactions as $transaction)
                 <tr class="border-b-2" wire:key="{{ $transaction->id }}">
                     <td class="p-2">
-                        {{ $transaction->date }}
+                        {{ \Carbon\Carbon::parse($transaction->date)->translatedFormat('d F Y') }}
                     </td>
                     <td class="p-2">
                         {{ $transaction->donation_type }}

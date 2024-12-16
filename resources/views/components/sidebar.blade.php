@@ -66,6 +66,31 @@
                 </span>
             </a>
         </li>
+        <li class="py-2">
+            <a class="text-black px-12">
+                Agenda
+            </a>
+        </li>
+        <li class="py-2">
+            <a class="text-black px-12">
+                Membres
+            </a>
+        </li>
+        <li class="py-2">
+            <a class="text-black px-12">
+                Todolist
+            </a>
+        </li>
+        <li class="py-2">
+            <a class="text-black px-12">
+                Fichiers
+            </a>
+        </li>
+        <li class="py-2">
+            <a class="text-black px-12">
+                Projets
+            </a>
+        </li>
         <div class="mt-auto mb-10">
             @role('admin')
                 <li>

@@ -21,7 +21,6 @@
                 </h2>
                 <livewire:transactions-list fundType="Fond spécifique"/>
             </div>
-            {{ $transactions->links() }}
         </div>
     </main>
 </div>

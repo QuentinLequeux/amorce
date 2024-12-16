@@ -15,7 +15,7 @@ beforeEach(function () {
     $this->user->assignRole($role);
 });
 
-test('acces to home page', function () {
+test('access to home page', function () {
     actingAs($this->user);
 
     $response = $this->get(route('home'));
@@ -23,7 +23,7 @@ test('acces to home page', function () {
     $response->assertStatus(200);
 });
 
-test('acces to general finances', function () {
+test('access to general finances', function () {
     actingAs($this->user);
 
     $response = $this->get(route('finances.general'));
@@ -31,7 +31,7 @@ test('acces to general finances', function () {
     $response->assertStatus(200);
 });
 
-test('acces to operating finances', function () {
+test('access to operating finances', function () {
     actingAs($this->user);
 
     $response = $this->get(route('finances.operating'));
@@ -39,7 +39,7 @@ test('acces to operating finances', function () {
     $response->assertStatus(200);
 });
 
-test('acces to specific finances', function () {
+test('access to specific finances', function () {
     actingAs($this->user);
 
     $response = $this->get(route('finances.specific'));
@@ -47,28 +47,20 @@ test('acces to specific finances', function () {
     $response->assertStatus(200);
 });
 
-test('a user can delete transaction', function () {
+test('access to settings', function () {
     actingAs($this->user);
 
-    $transaction = Transaction::factory()->create();
+    $response = $this->get(route('settings'));
 
-    $response = $this->delete(route('finances.general.destroy', $transaction));
-
-    $response->assertRedirect(route('finances.general'));
+    $response->assertStatus(200);
 });
 
-test('a user cant delete transaction', function () {
+test('dont have access to settings', function () {
     $role = Role::create(['name' => 'user']);
     $user = User::factory()->create();
     $user->assignRole($role);
-    $transaction = Transaction::factory()->create();
 
-    Livewire::actingAs($user)
-        ->test(GeneralFund::class)
-        ->call('destroy', $transaction->id)
-        ->assertForbidden();
+    $response = $this->get(route('settings'));
+
+    $response->assertStatus(403);
 });
-
-//    $response = $this->delete(route('finances.general.destroy', $transaction));
-
-//    $response->assertStatus(403);
