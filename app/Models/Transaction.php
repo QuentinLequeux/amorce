@@ -25,6 +25,20 @@ class Transaction extends Model
         return $this->belongsTo(Fund::class);
     }
 
+    public static function search(array $columns, $query)
+    {
+        return static::where(function ($q) use ($columns, $query) {
+            foreach ($columns as $column) {
+                $q->orWhere($column, 'like', '%' . $query . '%');
+            }
+        });
+    }
+
+//    public static function search($column, $query)
+//    {
+//        return static::where($column, 'like', '%' . $query . '%');
+//    }
+
 //    public static function getTotalByFundType($fundType)
 //    {
 //        return self::where('fund_type', $fundType)->sum('amount');
