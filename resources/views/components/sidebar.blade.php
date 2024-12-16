@@ -1,4 +1,4 @@
-<nav class="shrink-0 w-56 py-12 bg-yellow2 flex overflow-y-auto max-mobile:w-14 overflow-x-hidden">
+<nav class="shrink-0 w-56 py-12 bg-yellow2 flex overflow-y-auto max-mobile:w-14 overflow-x-hidden fixed h-full">
     <h2 class="sr-only">Navigation</h2>
     <ul class="flex flex-col">
         <li>
@@ -66,7 +66,7 @@
                 </span>
             </a>
         </li>
-        <div class="mt-auto">
+        <div class="mt-auto mb-10">
             @role('admin')
                 <li>
                     <a href="{{ route('settings') }}" title="Vers la page des paramètres"

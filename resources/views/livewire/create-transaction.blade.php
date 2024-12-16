@@ -63,12 +63,12 @@
                    wire:model.defer="amount"
                    placeholder="20.00€">
             <span class="absolute right-10 top-1/3">€</span>
-            @error('amount')
-            <span class="text-red-500">
-            {{ $message }}
-        </span>
-            @enderror
         </div>
+        @error('amount')
+        <span class="text-red-500">
+                {{ $message }}
+            </span>
+        @enderror
         <x-button>
             Ajouter
         </x-button>

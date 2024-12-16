@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         }
 //            'name' => FundType::GeneralFund,
 
-//        Transaction::factory(10)->create();
+        Transaction::factory(30)->create();
         Transaction::factory()->create([
             'date' => now(),
             'description' => 'Don',
