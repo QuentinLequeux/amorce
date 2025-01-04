@@ -31,23 +31,23 @@
             </thead>
             <tbody>
             @forelse($this->transactions as $transaction)
-                <tr class="border-b-2" wire:key="{{ $transaction->id }}">
+                <tr class="border-b-2 align-baseline" wire:key="{{ $transaction->id }}">
                     <td class="p-2">
                         {{ \Carbon\Carbon::parse($transaction->date)->translatedFormat('d F Y') }}
                     </td>
-                    <td class="p-2">
+                    <td class="p-2 align-baseline">
                         {{ $transaction->donation_type }}
                     </td>
                     <td class="size-7/12 p-2 min-w-[500px]">
                         {{ $transaction->description }}
                     </td>
-                    <td>
-                <span
-                    class="{{ $transaction->amount > 0 ? "bg-green-600" : "bg-red-500"}} p-2 rounded-3xl text-white font-bold flex justify-center max-w-20 mt-2 mb-2 max-mobile:mr-2">
-                    {{ $transaction->amount / 100 }}€
-                </span>
+                    <td class="align-middle">
+                        <span
+                            class="{{ $transaction->amount > 0 ? "bg-green-600" : "bg-red-500"}} p-2 rounded-3xl text-white font-bold flex justify-center max-w-20 max-mobile:mr-2 my-2">
+                            {{ $transaction->amount / 100 }}€
+                        </span>
                     </td>
-                    <td>
+                    <td class="align-middle">
                         @can('edit transaction')
                             <button type="button" title="Modifier"
                                     wire:click="$dispatch('showModal', [{{$transaction->id}}])"
@@ -62,7 +62,7 @@
                             </button>
                         @endcan
                     </td>
-                    <td>
+                    <td class="align-middle">
                         @can('delete transaction')
                             <button type="button" title="Supprimer"
                                     wire:click="$dispatch('openmodal', [{{$transaction->id}}])">

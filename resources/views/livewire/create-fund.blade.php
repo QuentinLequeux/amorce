@@ -1,6 +1,6 @@
 <div>
     @if($show)
-        <div class="absolute top-0 left-0 flex justify-center items-center w-screen bg-opacity-50 bg-black h-screen"
+        <div class="fixed inset-0 flex justify-center items-center w-screen bg-gradient-to-t from-gray-500 h-screen"
              x-data="{ open: @entangle('show')}"
              x-show="open">
             <div class="bg-white p-12 w-96 rounded self-center"

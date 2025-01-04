@@ -26,7 +26,7 @@
     </button>
 @endforeach
 @role('admin')
-<button class="font-medium hover:text-sidebar dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
-    +&nbsp;Cr&eacute;er un fond
-</button>
+    <button class="font-medium hover:text-sidebar dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
+        +&nbsp;Cr&eacute;er un fond
+    </button>
 @endrole

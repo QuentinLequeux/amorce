@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\DrawController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Draw;
 use App\Livewire\Settings;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])
         ->name('profile');
 
-    Route::get('/draw', [DrawController::class, 'index'])
+    Route::get('/draw', Draw::class)
         ->name('draw');
 });
 

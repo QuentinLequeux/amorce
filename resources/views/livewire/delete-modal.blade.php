@@ -1,9 +1,9 @@
 <div>
     @if($show)
-        <div class="absolute inset-0 w-full h-full bg-opacity-50 bg-black"
+        <div class="fixed inset-0 flex w-screen h-screen bg-opacity-50 bg-black justify-center items-center"
              x-data="{ open: @entangle('show') }"
              x-show="open">
-            <div class="fixed top-1/2 left-1/2 px-12 py-6 bg-white shadow-xl rounded-xl"
+            <div class="self-center px-12 py-6 bg-white shadow-xl rounded-xl"
                  @click.away="open = false">
                 <p class="m-4">
                     Etes vous sur de vouloir supprimer&nbsp;?
