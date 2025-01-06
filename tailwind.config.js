@@ -21,6 +21,7 @@ export default {
                 yellow: "#E5BB0B",
                 yellow2: "#FBD538",
                 active: "#0099FF",
+                error: "#fc3117"
             },
             screens: {
                 'mobile': '900px',

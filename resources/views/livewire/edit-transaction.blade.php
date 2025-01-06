@@ -57,11 +57,11 @@
                         </x-label>
                         <select class="p-2 mt-2 rounded border"
                                 id="fund_type"
-                                wire:model.change="fund_type"
+                                wire:model.change="fund_id"
                                 required>
                             <option>--S&eacute;lectionner--</option>
-                            @foreach(\App\Models\Fund::all() as $fundType)
-                                <option value="{{ $fundType->name }}">{{ $fundType->name }}</option>
+                            @foreach($funds as $fund)
+                                <option value="{{ $fund->id }}">{{ $fund->name }}</option>
                             @endforeach
                         </select>
                     </div>

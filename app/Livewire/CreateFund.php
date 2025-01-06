@@ -14,24 +14,19 @@ class CreateFund extends Component
     #[Validate]
     public $name;
 
-    public function mount(Fund $fund)
+    public function mount(Fund $fund): void
     {
         $this->fund = $fund;
     }
 
-//    public function render()
-//    {
-//        return view('livewire.create-fund');
-//    }
-
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required|string|unique:funds,name|max:255',
         ];
     }
 
-    public function save()
+    public function save(): void
     {
         $this->authorize('create', $this->fund);
 
@@ -45,8 +40,10 @@ class CreateFund extends Component
     }
 
     #[On('visibleModal')]
-    public function visibleModal()
+    public function visibleModal(): void
     {
         $this->show = true;
     }
 }
+
+// TODO : Rafraichir composant pour afficher le nouveau fond.

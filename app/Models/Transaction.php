@@ -22,7 +22,7 @@ class Transaction extends Model
 
     public function fund(): BelongsTo
     {
-        return $this->belongsTo(Fund::class);
+        return $this->belongsTo(Fund::class, 'fund_id');
     }
 
     public static function search(array $columns, $query)
