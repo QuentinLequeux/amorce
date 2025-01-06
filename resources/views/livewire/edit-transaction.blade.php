@@ -1,81 +1,99 @@
 <div>
     @if($show)
         <div x-data="{ open: @entangle('show') }"
-             x-show="open">
-            <div class="absolute left-1/4 top-1/2 flex flex-col bg-gray-500 p-6 rounded-xl max-w-3xl gap-2 justify-center items-center"
+             x-show="open"
+             class="inset-0 fixed bg-gradient-to-t from-gray-950 h-screen w-screen">
+            <div class="fixed inset-0 w-fit h-fit bg-white p-10 rounded-xl gap-2 m-auto shadow-xl"
                  @click.away="open = false">
-                <form wire:submit.prevent="update">
+                <p class="font-bold text-xl mb-4">
+                    Modifier&nbsp;une&nbsp;transaction
+                </p>
+                <div class="border mb-2"></div>
+                <form wire:submit.prevent="update" class="flex flex-col">
                     @csrf
-                    <div>
+                    <div class="flex flex-col">
                         <x-label for="date">
-                            Date&nbsp;*
+                            Date&nbsp;<x-mandatory/>
                         </x-label>
                         <input class="border rounded mt-2 p-2"
                                type="date"
                                id="date"
-                               wire:model.defer="date">
+                               wire:model.defer="date"
+                               required>
                     </div>
-                    <div>
+                    <div class="flex flex-col">
                         <x-label for="description">
-                            Description&nbsp;*
+                            Description&nbsp;<x-mandatory/>
                         </x-label>
                         <input class="border rounded mt-2 p-2"
                                type="text"
                                id="description"
                                wire:model.defer="description"
-                               placeholder="Don">
+                               placeholder="Ex : don en liquide"
+                               required>
                         @error('description')
-                        <span>
-                    {{ $message }}
-                    </span>
+                        <x-error>
+                            {{ $message }}
+                        </x-error>
                         @enderror
                     </div>
-                    <div>
+                    <div class="flex flex-col">
                         <x-label for="type">
-                            Type&nbsp;*
+                            Type&nbsp;<x-mandatory/>
                         </x-label>
-                        <select class="p-2 mt-2 rounded"
+                        <select class="p-2 mt-2 rounded border"
                                 id="type"
-                                wire:model.change="donation_type">
+                                wire:model.change="donation_type"
+                                required>
+                            <option>--S&eacute;lectionner--</option>
                             @foreach(\App\Enums\DonationType::cases() as $donationType)
                                 <option value="{{ $donationType }}">{{ $donationType }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div>
+                    <div class="flex flex-col">
                         <x-label for="fund_type">
-                            Fond&nbsp;*
+                            Fond&nbsp;<x-mandatory/>
                         </x-label>
-                        <select class="p-2 mt-2 rounded"
+                        <select class="p-2 mt-2 rounded border"
                                 id="fund_type"
-                                wire:model.change="fund_type">
-                            @foreach(\App\Enums\FundType::cases() as $fundType)
-                                <option value="{{ $fundType }}">{{ $fundType }}</option>
+                                wire:model.change="fund_type"
+                                required>
+                            <option>--S&eacute;lectionner--</option>
+                            @foreach(\App\Models\Fund::all() as $fundType)
+                                <option value="{{ $fundType->name }}">{{ $fundType->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div>
+                    <div class="flex flex-col relative">
                         <x-label for="amount">
-                            Montant&nbsp;*
+                            Montant&nbsp;<x-mandatory/>
                         </x-label>
-                        <input class="border rounded mt-2 p-2"
+                        <input class="border rounded my-2 p-2"
                                type="number"
                                id="amount"
                                wire:model.defer="amount"
-                               placeholder="20.00€">
-                        @error('amount')
-                        <span>
-            {{ $message }}
-        </span>
-                        @enderror
+                               placeholder="20.00€"
+                               required>
+                        <span class="absolute right-10 top-12">
+                            €
+                        </span>
                     </div>
-                    <x-button>
-                        Modifier
-                    </x-button>
+                    @error('amount')
+                    <x-error>
+                        {{ $message }}
+                    </x-error>
+                    @enderror
+                    <div>
+                        <button type="button" class="py-2 px-10 border border-black rounded-xl font-bold"
+                                wire:click="$set('show', false)">
+                            Annuler
+                        </button>
+                        <x-button>
+                            Modifier
+                        </x-button>
+                    </div>
                 </form>
-                <button class="py-2 px-12 bg-sidebar rounded text-white font-bold w-fit" wire:click="$set('show', false)">
-                    Annuler
-                </button>
             </div>
         </div>
     @endif
