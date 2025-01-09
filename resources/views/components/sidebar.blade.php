@@ -18,7 +18,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('finances.general') }}"
+            <a href="{{ route('finances') }}"
                class="{{ request()->is('finances','finances'.'/*')?'bg-yellow':'' }} flex items-center text-black group px-12 rounded-r-full py-4 max-mobile:p-4 max-mobile:rounded-r"
                title="Vers la page des finances"
                wire:navigate>

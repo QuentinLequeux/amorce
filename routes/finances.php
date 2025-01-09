@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function () {
 //    Route::post('/finances/import', [CsvImportController::class, 'store'])
 //        ->name('csv-import.store');
 
-    Route::get('/finances/general', GeneralFund::class)
-        ->name('finances.general');
+    Route::get('/finances', \App\Livewire\Funds::class)
+        ->name('finances');
 
     Route::delete('/finances/general/{transaction}', [GeneralFund::class, 'destroy'])
         ->name('finances.general.destroy');

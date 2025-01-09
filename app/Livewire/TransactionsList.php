@@ -21,8 +21,14 @@ class TransactionsList extends Component
     public $perPage = 7;
     public $search = '';
 
-    public function mount()
+//    public function __construct($currentFund)
+//    {
+//        $this->currentFund = $currentFund;
+//    }
+
+    public function mount($currentFund)
     {
+        $this->fundId = $currentFund;
         $this->loadTransactions();
     }
 

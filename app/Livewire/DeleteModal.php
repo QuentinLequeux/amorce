@@ -12,13 +12,13 @@ class DeleteModal extends Component
     public $transactionId;
 
     #[On('openmodal')]
-    public function showModal($id)
+    public function showModal($id): void
     {
         $this->transactionId = $id;
         $this->show = true;
     }
 
-    public function destroy(Transaction $transaction)
+    public function destroy(Transaction $transaction): void
     {
 //        $user = auth()->user();
 //
@@ -35,10 +35,5 @@ class DeleteModal extends Component
 //        $transaction->delete();
 //        return to_route('finances.operating');
         $this->show = false;
-    }
-
-    public function render()
-    {
-        return view('livewire.delete-modal');
     }
 }
