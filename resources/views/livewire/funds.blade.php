@@ -22,8 +22,8 @@
                     Transactions
                 </h2>
                 {{--                <livewire:transaction-search/>--}}
-{{--                <livewire:transactions-list :current-fund="$this->currentFund"/>--}}
-                @livewire('transactions-list', ['currentFund' => $this->currentFund])
+                <livewire:transactions-list :current-fund="$currentFund" wire:key="transactions-list-{{ $currentFund }}"/>
+{{--                @livewire('transactions-list', ['currentFund' => $this->currentFund])--}}
             </div>
         </div>
     </main>

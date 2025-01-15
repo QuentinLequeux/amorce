@@ -35,7 +35,6 @@
     </button>
 @endrole
 
-
 {{--<div class="flex gap-2 overflow-x-auto whitespace-nowrap text-main-text-on-yellow">--}}
 {{--    @foreach($this->funds as $fund)--}}
 {{--        <label for="fund_{{$fund->id}}" tabindex="0"--}}

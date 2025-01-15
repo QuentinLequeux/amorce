@@ -25,6 +25,26 @@
                 </svg>
                 D&eacute;tente
             </h1>
+            <div class="m-auto border p-6 rounded-xl flex flex-col">
+                <h2 class="m-auto font-bold text-2xl mb-4">
+                    Détente
+                </h2>
+                <button wire:click="random" class="bg-yellow2 px-6 py-2 rounded w-fit h-fit text-black m-auto mb-6">
+                    Tirage au sort
+                </button>
+                @if($winners)
+                    <ul>
+                        @foreach($winners as $index => $winner)
+                            <li>
+                                {{ $index + 1 }}){{ $winner['name'] }}
+                                <button wire:click="individual" class="bg-yellow2 px-4 py-2 text-black rounded mb-2">
+                                    Tirage individuel
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div>
         </div>
     </main>
 </div>

@@ -62,7 +62,9 @@ class CsvImport extends Component
         $hash = md5($fileContent);
 
         if (CsvHash::where('hash', $hash)->exists()) {
-            dd('Existe déja');
+//            dd('Existe déja');
+            $this->dispatch('showError');
+            return null;
         }
 
         CsvHash::create([
@@ -119,6 +121,6 @@ class CsvImport extends Component
 
         session()->flash('message', 'Data imported successfully.');
 
-        return $this->redirect(route('finances.general'), navigate: true);
+        return $this->redirect(route('finances'), navigate: true);
     }
 }

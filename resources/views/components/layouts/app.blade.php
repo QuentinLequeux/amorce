@@ -18,6 +18,7 @@
 @livewire('delete-modal')
 @livewire('edit-transaction')
 @livewire('create-fund')
+@livewire('exist')
 {{--@livewire('create-transaction')--}}
 </body>
 </html>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\FundType;
+use App\Models\Draw;
 use App\Models\Fund;
 use App\Models\Transaction;
 use App\Models\User;
@@ -49,6 +50,18 @@ class DatabaseSeeder extends Seeder
 //            'fund_type' => 'Fond général',
             'amount' => 22200,
         ]);
+
+//        Draw::factory()->create(['winners' => json_encode([
+//            ['name' => 'A'],
+//            ['name' => 'B'],
+//            ['name' => 'C'],
+//            ['name' => 'D'],
+//            ['name' => 'E'],
+//            ['name' => 'F'],
+//            ['name' => 'G'],
+//            ['name' => 'H'],
+//            ['name' => 'I'],
+//        ])]);
 
 //        Transaction::factory(20)->create([
 //            'date' => now(),

@@ -37,9 +37,9 @@
                         @click="open = false; $wire.set('csv', null); $wire.set('fileSize', null);">
                     Annuler
                 </button>
-                <x-button>
+                <button type="submit" class="mt-2 bg-yellow2 px-10 py-2 text-black font-bold rounded-xl" @click="open = false">
                     Envoyer
-                </x-button>
+                </button>
             </div>
         </form>
     </div>

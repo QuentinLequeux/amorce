@@ -27,25 +27,27 @@ class Funds extends Component
 
     public function updatedCurrentFund(): void
     {
+//        dd($this->currentFund);
         $this->totalGeneral = Transaction::getTotalByFundId($this->currentFund);
         $this->resetPage();
     }
 
-//    public function render()
-//    {
-////        $user = auth()->user();
-////        $totalGeneral = Transaction::getTotalByFundId($this->currentFund);
-//////        $transactions = Transaction::orderBy('date', 'desc')->paginate(7);
-////        $transactions = Transaction::where('fund_id', $this->currentFund)->orderBy('date', 'ASC')->paginate(7);
-////        return view('livewire.funds', compact('user', 'totalGeneral', 'transactions'));
-//    }
-
-    public function show()
+    public function render()
     {
-//        $this->user = auth()->user();
+//        dd('Current Fund:', $this->currentFund, 'Transactions:', Transaction::where('fund_id', $this->currentFund)->get());
+        $user = auth()->user();
+        $totalGeneral = Transaction::getTotalByFundId($this->currentFund);
 //        $transactions = Transaction::orderBy('date', 'desc')->paginate(7);
-        $this->transactions = Transaction::where('fund_id', $this->currentFund)->orderBy('date', 'ASC')->paginate(7);
+        $transactions = Transaction::where('fund_id', $this->currentFund)->orderBy('date', 'ASC')->paginate(7);
+        return view('livewire.funds', ['currentFund' => $this->currentFund], compact('user', 'totalGeneral', 'transactions'));
     }
+
+//    public function show()
+//    {
+////        $this->user = auth()->user();
+////        $transactions = Transaction::orderBy('date', 'desc')->paginate(7);
+//        $this->transactions = Transaction::where('fund_id', $this->currentFund)->orderBy('date', 'ASC')->paginate(7);
+//    }
 
     public function destroy(Transaction $transaction)
     {
@@ -57,7 +59,7 @@ class Funds extends Component
     }
 
     #[On('transactionDeleted')]
-    public function resetTransactionList()
+    public function resetTransactionList(): void
     {
         $totalGeneral = Transaction::getTotalByFundId(1);
         unset($totalGeneral);

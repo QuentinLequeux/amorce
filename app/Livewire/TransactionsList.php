@@ -20,6 +20,7 @@ class TransactionsList extends Component
     public $sortDirection = 'desc';
     public $perPage = 7;
     public $search = '';
+    public $currentFund;
 
 //    public function __construct($currentFund)
 //    {
@@ -28,14 +29,24 @@ class TransactionsList extends Component
 
     public function mount($currentFund)
     {
-        $this->fundId = $currentFund;
+        $this->currentFund = $currentFund ?? \App\Models\Fund::first()->id;
+//        $this->currentFund = $currentFund;
         $this->loadTransactions();
     }
 
-    public function loadTransactions()
+    public function updatedCurrentFund(): void
+    {
+        // Réinitialiser la pagination et mettre à jour le total
+//        $this->resetPage();
+//        $this->updateTotalGeneral();
+        $this->loadTransactions();
+    }
+
+    public function loadTransactions(): void
     {
         // Charger les transactions avec tri dynamique
-        $this->transactions = Transaction::where('fund_id', $this->fundId)
+//        dd($this->currentFund);
+        $this->transactions = Transaction::where('fund_id', $this->currentFund)
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate($this->perPage);
     }
@@ -65,7 +76,7 @@ class TransactionsList extends Component
     public function render()
     {
 //        sleep(1);
-        return view('livewire.transactions-list');
+        return view('livewire.transactions-list', ['transactions' => $this->transactions]);
         //, ['transactions' => Transaction::search('description', $this->search)->paginate(10),]
     }
 
@@ -77,8 +88,9 @@ class TransactionsList extends Component
     }
 
     #[On('transactionDeleted')]
-    public function resetTransactionList()
+    public function resetTransactionList(): void
     {
         unset($this->transactions);
+//        $this->loadTransactions();
     }
 }
