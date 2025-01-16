@@ -1,5 +1,5 @@
 <div class="flex flex-col h-screen">
-    <x-header :user="$user"></x-header>
+{{--    <x-header :user="$user"></x-header>--}}
     <main class="flex grow mt-[calc(70px)] bg-white dark:bg-gray-900 text-black dark:text-white">
         <x-sidebar></x-sidebar>
         <div class="p-6 flex flex-col w-full max-mobile:w-[calc(130%-224px)] ml-56 max-mobile:ml-14 max-mobile:pr-0">

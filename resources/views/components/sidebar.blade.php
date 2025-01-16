@@ -19,7 +19,7 @@
         </li>
         <li>
             <a href="{{ route('finances') }}"
-               class="{{ request()->is('finances','finances'.'/*')?'bg-yellow':'' }} flex items-center text-black group px-12 rounded-r-full py-4 max-mobile:p-4 max-mobile:rounded-r"
+               class="@if (route('finances') === url()->current() ) bg-yellow @endif flex items-center text-black group px-12 rounded-r-full py-4 max-mobile:p-4 max-mobile:rounded-r"
                title="Vers la page des finances"
                wire:navigate>
                 <svg class="mr-2 stroke-black" xmlns="http://www.w3.org/2000/svg" width="25" height="25"

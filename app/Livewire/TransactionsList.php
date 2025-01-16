@@ -37,8 +37,8 @@ class TransactionsList extends Component
     public function updatedCurrentFund(): void
     {
         // Réinitialiser la pagination et mettre à jour le total
-//        $this->resetPage();
-//        $this->updateTotalGeneral();
+        $this->resetPage();
+//        $this->updateTota lGeneral();
         $this->loadTransactions();
     }
 

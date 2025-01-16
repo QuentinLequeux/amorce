@@ -108,6 +108,6 @@
         </table>
     </div>
     <div>
-        {{ $this->transactions->links('pagination::tailwind') }}
+        {{ $transactions->links('pagination::tailwind') }}
     </div>
 </div>

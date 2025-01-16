@@ -34,14 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/finances/general/{transaction}', [GeneralFund::class, 'destroy'])
         ->name('finances.general.destroy');
 
-    Route::get('/finances/operating', OperatingFund::class)
-        ->name('finances.operating');
+//    Route::get('/finances/operating', OperatingFund::class)
+//        ->name('finances.operating');
 
     Route::delete('/finances/operating/{transaction}', [OperatingFund::class, 'destroy'])
         ->name('finances.operating.destroy');
 
-    Route::get('/finances/specific', SpecificFund::class)
-        ->name('finances.specific');
+//    Route::get('/finances/specific', SpecificFund::class)
+//        ->name('finances.specific');
 
     Route::delete('/finances/specific/{transaction}', [SpecificFund::class, 'destroy'])
         ->name('finances.specific.destroy');

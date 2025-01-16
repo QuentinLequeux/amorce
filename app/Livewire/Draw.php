@@ -93,28 +93,23 @@ class Draw extends Component
             return false;
         }
 
-        // Aplatir les dates si elles sont dans des tableaux imbriqués
         $history = array_map(function ($date) {
-            return is_array($date) ? $date[0] : $date; // Assurez-vous que c'est une chaîne
+            return is_array($date) ? $date[0] : $date;
         }, $history);
 
-        // Convertir les dates en objets DateTime pour faciliter la comparaison
         $dates = array_map(fn($date) => \DateTime::createFromFormat('m-Y', $date), $history);
 
-        // Trier les dates du plus ancien au plus récent
         usort($dates, fn($a, $b) => $a <=> $b);
 
-        // Comparer chaque date avec la suivante pour vérifier la consécutivité
         for ($i = 0; $i < count($dates) - 1; $i++) {
             $currentDate = $dates[$i];
             $nextDate = $dates[$i + 1];
 
-            // Vérifier si les dates sont consécutives en tenant compte des mois et des années
             $isNextMonthConsecutive = ($nextDate->format('Y') == $currentDate->format('Y') && $nextDate->format('m') == $currentDate->format('m') + 1) ||
                 ($nextDate->format('Y') == $currentDate->format('Y') + 1 && $nextDate->format('m') == '01' && $currentDate->format('m') == '12');
 
             if (!$isNextMonthConsecutive) {
-                return false; // Les mois ne se suivent pas
+                return false;
             }
         }
 

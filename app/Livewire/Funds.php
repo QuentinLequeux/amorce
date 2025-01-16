@@ -55,7 +55,7 @@ class Funds extends Component
 
         $transaction->delete();
 
-        return to_route('finances.general');
+        return to_route('finances');
     }
 
     #[On('transactionDeleted')]

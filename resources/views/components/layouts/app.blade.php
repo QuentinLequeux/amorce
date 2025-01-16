@@ -11,14 +11,16 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
+    @livewireStyles
 </head>
 <body x-data="{ darkMode: $persist(false) }" :class="{ 'dark': darkMode === true }" class="antialiased">
-{{--<x-header :user="$user"></x-header>--}}
+@livewire('header')
 {{ $slot }}
 @livewire('delete-modal')
 @livewire('edit-transaction')
 @livewire('create-fund')
 @livewire('exist')
+@livewireScripts
 {{--@livewire('create-transaction')--}}
 </body>
 </html>

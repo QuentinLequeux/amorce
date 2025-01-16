@@ -65,6 +65,6 @@ class CreateTransaction extends Component
             'amount' => $this->amount,
         ]);
 
-        return redirect(route('finances.general'));
+        return redirect(route('finances'));
     }
 }
