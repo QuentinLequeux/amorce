@@ -5,7 +5,7 @@
         <div class="p-6 flex flex-col w-full max-mobile:w-[calc(130%-224px)] ml-56 max-mobile:ml-14 max-mobile:pr-0">
             <div class="flex items-center justify-between max-mobile:flex-col max-mobile:items-start">
                 <x-title>
-                    Finances / G&eacute;n&eacute;ral
+                    Finances
                 </x-title>
                 <x-navigation></x-navigation>
             </div>

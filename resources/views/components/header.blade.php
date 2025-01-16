@@ -1,6 +1,6 @@
 <header class="flex fixed w-full bg-white dark:bg-gray-900 text-black dark:text-white">
     <div class="bg-yellow px-6 py-4 w-56 flex justify-center shrink-0 max-mobile:w-14">
-        <a href="/" title="Vers la page d'accueil" class="text-black font-bold text-2xl max-mobile:hidden">Amorce</a>
+        <a href="/" title="Vers la page d'accueil" class="text-black font-bold text-2xl max-mobile:hidden" wire:navigate>Amorce</a>
     </div>
     <div class="py-4 px-12 w-full flex justify-end shadow-md max-mobile:justify-end">
         <livewire:theme-switcher/>
@@ -13,7 +13,7 @@
             </button>
             <livewire:notifications/>
         </div>
-        <a href="/profile" title="Vers le profil" class="flex items-center font-bold">
+        <a href="/profile" title="Vers le profil" class="flex items-center font-bold" wire:navigate>
             <span class="mr-2">{{ $user->name }}</span>
             <svg class="dark:stroke-white" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="black">
                 <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

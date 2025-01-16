@@ -4,7 +4,7 @@
         <li>
             <a href="{{ route('home') }}"
                class="@if (route('home') === url()->current() ) bg-yellow @endif flex items-center text-black group px-12 py-4 rounded-r-full max-mobile:p-4 max-mobile:rounded-r"
-               title="Vers la page d'accueil">
+               title="Vers la page d'accueil" wire:navigate>
                 <svg class="mr-2 stroke-black" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                      viewBox="0 0 24 24" fill="none">
                     <path

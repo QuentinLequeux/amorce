@@ -31,7 +31,7 @@ class Draw extends Component
 
         $eligible = $donators->filter(function ($donator) {
             $history = json_decode($donator->history, true);
-            return is_array($history) && count($history) >= 2;
+            return is_array($history) && count($history) >= 2 && $this->hasConsecutiveMonths($history);
         });
 
         $unique = $eligible->unique('iban');
@@ -54,19 +54,12 @@ class Draw extends Component
         });
 
         // Remplace le groupe ciblé
-//        $newWinners = array_slice($models, 0, 3);
         $newWinners = array_slice(array_values($filtered), 0, 3);
         $updatedWinners = $current;
         array_splice($updatedWinners, $groupToReplace, 3, $newWinners);
 
-//        $newWinners = array_slice($models, 0, 3);
-//        $middleWinners = array_slice($current,3,3);
-//        $lastWinners = array_slice($current,6,3);
-//        $updatedWinners = array_merge($newWinners, $middleWinners, $lastWinners);
-
         \App\Models\Draw::create([
             'winners' => json_encode($updatedWinners),
-//            'winners' => json_encode($this->winners),
         ]);
 
         $this->winners = $updatedWinners;
@@ -92,6 +85,40 @@ class Draw extends Component
         shuffle($models);
 
         return array_slice($models, 0, 9);
+    }
+
+    public function hasConsecutiveMonths(array $history): bool
+    {
+        if (count($history) < 2) {
+            return false;
+        }
+
+        // Aplatir les dates si elles sont dans des tableaux imbriqués
+        $history = array_map(function ($date) {
+            return is_array($date) ? $date[0] : $date; // Assurez-vous que c'est une chaîne
+        }, $history);
+
+        // Convertir les dates en objets DateTime pour faciliter la comparaison
+        $dates = array_map(fn($date) => \DateTime::createFromFormat('m-Y', $date), $history);
+
+        // Trier les dates du plus ancien au plus récent
+        usort($dates, fn($a, $b) => $a <=> $b);
+
+        // Comparer chaque date avec la suivante pour vérifier la consécutivité
+        for ($i = 0; $i < count($dates) - 1; $i++) {
+            $currentDate = $dates[$i];
+            $nextDate = $dates[$i + 1];
+
+            // Vérifier si les dates sont consécutives en tenant compte des mois et des années
+            $isNextMonthConsecutive = ($nextDate->format('Y') == $currentDate->format('Y') && $nextDate->format('m') == $currentDate->format('m') + 1) ||
+                ($nextDate->format('Y') == $currentDate->format('Y') + 1 && $nextDate->format('m') == '01' && $currentDate->format('m') == '12');
+
+            if (!$isNextMonthConsecutive) {
+                return false; // Les mois ne se suivent pas
+            }
+        }
+
+        return true;
     }
 
     public function individual()

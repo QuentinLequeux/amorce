@@ -3,10 +3,12 @@
 namespace Database\Seeders;
 
 use App\Enums\FundType;
+use App\Models\Donators;
 use App\Models\Draw;
 use App\Models\Fund;
 use App\Models\Transaction;
 use App\Models\User;
+use Database\Factories\DonatorsFactory;
 use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -51,6 +53,8 @@ class DatabaseSeeder extends Seeder
             'amount' => 22200,
         ]);
 
+        Donators::factory()->count(30)->create();
+//
 //        Draw::factory()->create(['winners' => json_encode([
 //            ['name' => 'A'],
 //            ['name' => 'B'],

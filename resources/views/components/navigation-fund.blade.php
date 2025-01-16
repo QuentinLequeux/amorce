@@ -20,7 +20,7 @@
 {{--    Fond sp&eacute;cifique--}}
 {{--</a>--}}
 @foreach(\App\Models\Fund::all() as $fund)
-    <label for="fund_{{ $fund->id }}" tabindex="0" class="cursor-pointer">
+    <label for="fund_{{ $fund->id }}" tabindex="0" class="cursor-pointer hover:text-yellow2 whitespace-nowrap">
         {{ str($fund->name)->toHtmlString() }}
     </label>
     <input type="radio" id="fund_{{ $fund->id }}" value="{{ $fund->id }}" class="hidden" wire:model.live="currentFund">
@@ -30,7 +30,7 @@
 {{--    </button>--}}
 @endforeach
 @role('admin')
-    <button class="font-medium hover:text-sidebar dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
+    <button class="font-medium hover:text-yellow2 dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
         +&nbsp;Cr&eacute;er un fond
     </button>
 @endrole
