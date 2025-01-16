@@ -1,5 +1,5 @@
 <div class="flex flex-col h-screen">
-{{--    <x-header :user="$user"></x-header>--}}
+    {{--    <x-header :user="$user"></x-header>--}}
     <main class="flex grow mt-[calc(70px)] bg-white dark:bg-gray-900 text-black dark:text-white">
         <x-sidebar></x-sidebar>
         <div class="p-6 flex flex-col w-full max-mobile:w-[calc(130%-224px)] ml-56 max-mobile:ml-14 max-mobile:pr-0">
@@ -29,17 +29,19 @@
                 <h2 class="m-auto font-bold text-2xl mb-4">
                     Détente
                 </h2>
-                <button wire:click="random" class="bg-yellow2 px-6 py-2 rounded w-fit h-fit text-black m-auto mb-6">
-                    Tirage au sort
-                </button>
+                @role('admin')
+                    <button wire:click="random" class="bg-yellow2 px-6 py-2 rounded w-fit h-fit text-black m-auto mb-6">
+                        Tirage au sort
+                    </button>
+                @endrole
                 @if($winners)
                     <ul>
                         @foreach($winners as $index => $winner)
                             <li>
                                 {{ $index + 1 }}){{ $winner['name'] }}
-                                <button wire:click="individual" class="bg-yellow2 px-4 py-2 text-black rounded mb-2">
-                                    Tirage individuel
-                                </button>
+{{--                                <button wire:click="individual" class="bg-yellow2 px-4 py-2 text-black rounded mb-2">--}}
+{{--                                    Tirage individuel--}}
+{{--                                </button>--}}
                             </li>
                         @endforeach
                     </ul>
