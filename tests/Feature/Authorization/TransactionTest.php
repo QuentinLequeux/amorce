@@ -3,7 +3,6 @@
 use App\Livewire\CreateTransaction;
 use App\Livewire\CsvImport;
 use App\Livewire\EditTransaction;
-use App\Livewire\GeneralFund;
 use App\Models\Fund;
 use App\Models\Transaction;
 use App\Models\User;
@@ -28,7 +27,7 @@ test('a user with admin role can delete transaction', function () {
 
     $response = $this->delete(route('finances.general.destroy', $transaction));
 
-    $response->assertRedirect(route('finances.general'));
+    $response->assertRedirect(route('finances'));
 });
 
 test('a user with admin role can modify transaction', function () {
@@ -56,7 +55,7 @@ test('a user without admin role cant delete transaction', function () {
     $transaction = Transaction::factory()->create();
 
     Livewire::actingAs($user)
-        ->test(GeneralFund::class)
+        ->test(\App\Livewire\Funds::class)
         ->call('destroy', $transaction->id)
         ->assertForbidden();
 });

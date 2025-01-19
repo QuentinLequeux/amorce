@@ -34,7 +34,8 @@ class CsvImport extends Component
         $this->authorize('create', Transaction::class);
 
         if (!$this->csv) {
-            dd('Aucun fichier');
+//            dd('Aucun fichier');
+            return null;
         }
 
         $this->validate([

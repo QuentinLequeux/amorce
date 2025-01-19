@@ -26,7 +26,7 @@ class CreateFund extends Component
         ];
     }
 
-    public function save(): void
+    public function save()
     {
         $this->authorize('create', $this->fund);
 
@@ -37,6 +37,8 @@ class CreateFund extends Component
         ]);
 
         $this->show = false;
+
+        return $this->redirect(route('finances'));
     }
 
     #[On('visibleModal')]

@@ -23,29 +23,29 @@ test('access to home page', function () {
     $response->assertStatus(200);
 });
 
-test('access to general finances', function () {
+test('access to finances', function () {
     actingAs($this->user);
 
-    $response = $this->get(route('finances.general'));
+    $response = $this->get(route('finances'));
 
     $response->assertStatus(200);
 });
 
-test('access to operating finances', function () {
-    actingAs($this->user);
+//test('access to operating finances', function () {
+//    actingAs($this->user);
+//
+//    $response = $this->get(route('finances.operating'));
+//
+//    $response->assertStatus(200);
+//});
 
-    $response = $this->get(route('finances.operating'));
-
-    $response->assertStatus(200);
-});
-
-test('access to specific finances', function () {
-    actingAs($this->user);
-
-    $response = $this->get(route('finances.specific'));
-
-    $response->assertStatus(200);
-});
+//test('access to specific finances', function () {
+//    actingAs($this->user);
+//
+//    $response = $this->get(route('finances.specific'));
+//
+//    $response->assertStatus(200);
+//});
 
 test('access to settings', function () {
     actingAs($this->user);

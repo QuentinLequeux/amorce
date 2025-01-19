@@ -20,6 +20,8 @@
 @livewire('edit-transaction')
 @livewire('create-fund')
 @livewire('exist')
+@livewire('confirm-draw')
+@livewire('empty-draw')
 @livewireScripts
 {{--@livewire('create-transaction')--}}
 </body>

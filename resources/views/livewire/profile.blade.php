@@ -1,5 +1,5 @@
 <div class="flex flex-col h-screen">
-{{--    <x-header :user="$user"></x-header>--}}
+    {{--    <x-header :user="$user"></x-header>--}}
     <main class="flex grow mt-[calc(70px)] bg-white dark:bg-gray-900 text-black dark:text-white">
         <x-sidebar></x-sidebar>
         <div
@@ -16,6 +16,59 @@
                 </svg>
                 Profil
             </h1>
+            <div class="m-auto w-96">
+                <h3 class="font-bold mb-4 text-xl">
+                    Changer le mot de passe :
+                </h3>
+                <p class="text-sm mb-4">
+                    Votre mot de passe doit contenir minimum 8 caractères
+                </p>
+                <form class="flex flex-col" wire:submit.prevent="updatePassword()">
+                    @csrf
+                    <label class="mb-2" for="current_password">
+                        Mot de passe actuel :
+                    </label>
+                    <input type="password"
+                           class="mb-2 rounded bg-white dark:bg-gray-600 p-2 border border-gray-400"
+                           wire:model="current_password"
+                           id="current_password"
+                           required>
+                    @error('current_password')
+                    <x-error>
+                        {{ $message }}
+                    </x-error>
+                    @enderror
+                    <label class="mb-2" for="password">
+                        Nouveau mot de passe :
+                    </label>
+                    <input type="password"
+                           class="mb-2 rounded bg-white dark:bg-gray-600 p-2 border border-gray-400"
+                           wire:model="password"
+                           id="password"
+                           required>
+                    @error('password')
+                    <x-error>
+                        {{ $message }}
+                    </x-error>
+                    @enderror
+                    <label class="mb-2" for="new_password">
+                        Confirmer le mot de passe :
+                    </label>
+                    <input type="password"
+                           class="mb-6 rounded bg-white dark:bg-gray-600 p-2 border border-gray-400"
+                           wire:model="password_confirmation"
+                           id="new_password"
+                           required>
+                    @error('password_confirmation')
+                    <x-error>
+                        {{ $message }}
+                    </x-error>
+                    @enderror
+                    <button type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold">
+                        Changer
+                    </button>
+                </form>
+            </div>
         </div>
     </main>
 </div>

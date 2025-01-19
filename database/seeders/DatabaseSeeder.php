@@ -41,19 +41,21 @@ class DatabaseSeeder extends Seeder
                 'name' => $fund->value
             ]);
         }
+
 //            'name' => FundType::GeneralFund,
 
-        Transaction::factory(30)->create();
-        Transaction::factory()->create([
-            'date' => now(),
-            'description' => 'Don',
-            'donation_type' => 'Liquide',
-            'fund_id' => Fund::all()->random()->id,
-//            'fund_type' => 'Fond général',
-            'amount' => 22200,
-        ]);
+//        Transaction::factory(30)->create();
+//        Transaction::factory()->create([
+//            'date' => now(),
+//            'description' => 'Don',
+//            'donation_type' => 'Liquide',
+//            'fund_id' => Fund::all()->random()->id,
+////            'fund_type' => 'Fond général',
+//            'amount' => 22200,
+//        ]);
 
-        Donators::factory()->count(30)->create();
+//        Donators::factory()->count(30)->create();
+
 //
 //        Draw::factory()->create(['winners' => json_encode([
 //            ['name' => 'A'],

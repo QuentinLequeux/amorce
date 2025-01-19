@@ -50,6 +50,11 @@
                                 <option value="{{ $donationType }}">{{ $donationType }}</option>
                             @endforeach
                         </select>
+                        @error('donation_type')
+                        <x-error>
+                            {{ $message }}
+                        </x-error>
+                        @enderror
                     </div>
                     <div class="flex flex-col">
                         <x-label for="fund_type">
