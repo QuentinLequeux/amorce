@@ -29,7 +29,7 @@
                         Mot de passe actuel :
                     </label>
                     <input type="password"
-                           class="mb-2 rounded bg-white dark:bg-gray-600 p-2 border border-gray-400"
+                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400"
                            wire:model="current_password"
                            id="current_password"
                            required>
@@ -42,7 +42,7 @@
                         Nouveau mot de passe :
                     </label>
                     <input type="password"
-                           class="mb-2 rounded bg-white dark:bg-gray-600 p-2 border border-gray-400"
+                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400"
                            wire:model="password"
                            id="password"
                            required>
@@ -55,7 +55,7 @@
                         Confirmer le mot de passe :
                     </label>
                     <input type="password"
-                           class="mb-6 rounded bg-white dark:bg-gray-600 p-2 border border-gray-400"
+                           class="mb-6 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400"
                            wire:model="password_confirmation"
                            id="new_password"
                            required>

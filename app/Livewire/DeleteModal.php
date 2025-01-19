@@ -35,5 +35,7 @@ class DeleteModal extends Component
 //        $transaction->delete();
 //        return to_route('finances.operating');
         $this->show = false;
+
+        $this->redirect(route('finances'));
     }
 }
