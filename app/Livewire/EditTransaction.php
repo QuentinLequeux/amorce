@@ -70,6 +70,8 @@ class EditTransaction extends Component
         $this->show = false;
 
         $this->dispatch('transactionDeleted');
+
+        $this->redirect(route('finances'));
     }
 
     #[On('showModal')]
