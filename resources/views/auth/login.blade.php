@@ -8,7 +8,7 @@
     <title>Document</title>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
-<body class="font-sans antialiased min-h-screen flex items-center justify-center bg-sidebar">
+<body class="font-sans antialiased min-h-screen flex items-center justify-center bg-yellow2">
 <div class="bg-white p-10 rounded-xl w-full max-w-md shadow-2xl">
     <h1 class="font-bold text-center text-3xl" aria-level="1" role="heading">
         Amorce
@@ -51,7 +51,9 @@
             </div>
         </div>
         <label for="remember">
-            <input type="checkbox" id="remember">
+            <input type="checkbox"
+                   id="remember"
+                   name="remember">
             <span>Remember&nbsp;me</span>
         </label>
         <div class="flex justify-center mt-6 mb-4">

@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('auth.login');
     }
 
@@ -20,8 +21,18 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $remember = $request->has('remember');
+
+//        if ($remember) {
+//            \Config::set('session.remember_me_lifetime', 1440); // 1 jour
+//        } else {
+//            \Config::set('session.lifetime', 10); // 10 minutes
+//        }
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
+
+//            dd(cookie()->getQueuedCookies());
 
             return redirect()->intended('/');
         }

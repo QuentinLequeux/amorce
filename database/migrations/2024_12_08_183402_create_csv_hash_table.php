@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('csv_hashes', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('fund_type');
-            $table->string('donation_type');
-            $table->text('description');
-            $table->decimal('amount', 5, 2);
+            $table->string('hash');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('csv_hash');
     }
 };

@@ -8,7 +8,8 @@ Route::middleware('guest')->group(function () {
         return view('auth/login');
     });
 
-    Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::post('/login', [LoginController::class, 'authenticate'])
+        ->name('login');
 
     Route::get('/forgot-password', function () {
         return view('auth/forgot-password');
