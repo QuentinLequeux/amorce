@@ -1,6 +1,6 @@
 <div class="flex flex-wrap gap-4">
     @foreach($funds as $fund)
-        <div class="mt-10 p-6 w-[300px] h-auto shadow-lg rounded-2xl flex items-center dark:bg-[#000]">
+        <div class="mt-10 p-6 w-[300px] h-auto shadow-lg rounded-2xl flex items-center dark:bg-[#000] max-sm:w-[95%]">
             <div class="px-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round"
