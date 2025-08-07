@@ -2,18 +2,24 @@
 
 namespace App\Livewire;
 
+use Livewire\Component;
 use App\Models\Donators;
 use Livewire\Attributes\On;
-use Livewire\Component;
 
 class Draw extends Component
 {
     public $winners = [];
+    public $history = [];
 
     public function render()
     {
-        $lastDraw = \App\Models\Draw::latest()->first();
+        $draws = \App\Models\Draw::latest()->get();
+        $lastDraw = $draws->first();
         $this->winners = $lastDraw ? json_decode($lastDraw->winners, true) : [];
+        $this->history = $draws->skip(1)->map(function($draw) {
+           return json_decode($draw->winners, true);
+        })->values();
+
         $user = auth()->user();
 
         return view('livewire.draw', compact('user'));

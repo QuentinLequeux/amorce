@@ -1,5 +1,4 @@
 <div class="flex flex-col h-screen">
-    {{--    <x-header :user="$user"></x-header>--}}
     <main class="flex grow mt-[calc(70px)] bg-white dark:bg-gray-900 text-black dark:text-white">
         <x-sidebar></x-sidebar>
         <div class="p-6 flex flex-col w-full max-mobile:w-[calc(130%-224px)] ml-56 max-mobile:ml-14 max-mobile:pr-0">
@@ -47,6 +46,25 @@
                     </ul>
                 @endif
             </div>
+            @if($history && count($history) > 0)
+                <div class="mt-8">
+                    <h3 aria-level="3" role="heading" class="text-xl font-bold mb-4">
+                        Historique des d&eacute;tentes
+                    </h3>
+                    <ul class="space-y-4">
+                        @foreach($history as $draws => $draw)
+                            <li class="border rounded-xl p-6">
+                                <strong>Tirage #{{ count($history) - $draws }}</strong>
+                                <ul class="mt-2">
+                                    @foreach($draw as $index => $winner)
+                                        <li>{{ $index + 1 }}) {{ $winner['name'] }}</li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </main>
 </div>
