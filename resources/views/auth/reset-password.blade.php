@@ -27,12 +27,18 @@
                     Mot de passe
                 </label>
                 <input class="border p-2 rounded" type="password" name="password" id="password" placeholder="********" required>
+                @error('password')
+                <p class="text-red-500">{{ $message }}</p>
+                @enderror
             </div>
             <div class="flex flex-col mb-6">
                 <label class="mb-2" for="password_confirmation">
                     Confirmer le mot de passe
                 </label>
                 <input class="border p-2 rounded" type="password" name="password_confirmation" id="password_confirmation" placeholder="********" requuired>
+                @error('password_confirmation')
+                <p class="text-red-500">{{ $message }}</p>
+                @enderror
             </div>
             <x-button>
                 R&eacute;initialiser
