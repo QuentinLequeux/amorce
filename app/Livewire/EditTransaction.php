@@ -3,10 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Fund;
+use Livewire\Component;
 use App\Models\Transaction;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
-use Livewire\Component;
 
 class EditTransaction extends Component
 {
@@ -59,13 +59,31 @@ class EditTransaction extends Component
 
         $this->validate();
 
-        $this->transaction->update([
-            'date' => $this->date,
-            'description' => $this->description,
-            'donation_type' => $this->donation_type,
-            'fund_id' => $this->fund_id,
-            'amount' => $this->amount,
-        ]);
+        if ($this->donation_type === 'Transfert') {
+            $this->transaction->update([
+                'date' => $this->date,
+                'description' => $this->description,
+                'donation_type' => $this->donation_type,
+                'fund_id' => $this->transaction->fund_id,
+                'amount' => -abs($this->amount),
+            ]);
+
+            Transaction::create([
+                'date' => $this->date,
+                'description' => $this->description,
+                'donation_type' => $this->donation_type,
+                'fund_id' => $this->fund_id,
+                'amount' => abs($this->amount),
+            ]);
+        } else {
+            $this->transaction->update([
+                'date' => $this->date,
+                'description' => $this->description,
+                'donation_type' => $this->donation_type,
+                'fund_id' => $this->fund_id,
+                'amount' => $this->amount,
+            ]);
+        }
 
         $this->show = false;
 
