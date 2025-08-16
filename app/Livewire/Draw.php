@@ -54,6 +54,7 @@ class Draw extends Component
         $models = $unique->map(function ($donator) {
             return [
                 'name' => $donator->name,
+                'email' => $donator->email,
             ];
         })->toArray();
 
