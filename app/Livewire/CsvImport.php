@@ -82,6 +82,21 @@ class CsvImport extends Component
 //                $month = Carbon::createFromFormat('d-m-Y', $data[0])->format('m');
                 $iban = $data[3];
                 $name = $data[5];
+
+                $keywords = ['asbl', 'association', 'fondation'];
+
+                $isAssociation = false;
+                foreach ($keywords as $keyword) {
+                    if (str_contains(strtolower($name), $keyword)) {
+                        $isAssociation = true;
+                        break;
+                    }
+                }
+
+                if ($isAssociation) {
+                    continue;
+                }
+
                 $amount = str($data[2])->replace(',', '')->replace('.', '');
 
                 if (!empty($iban)) {
