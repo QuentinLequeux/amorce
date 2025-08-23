@@ -26,7 +26,7 @@
                         Email
                     </label>
                     <input required type="email" id="email" wire:model="email"
-                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400 max-sm:w-[300px]">
+                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-white p-2 border border-gray-400 max-sm:w-[300px]">
                     @error('email')
                     <x-error>
                         {{ $message }}
