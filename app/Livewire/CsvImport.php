@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
-use App\Models\CsvHash;
-use App\Models\Donators;
-use App\Models\Fund;
-use App\Models\Transaction;
 use Carbon\Carbon;
+use App\Models\Fund;
+use App\Models\CsvHash;
 use Livewire\Component;
+use App\Models\Donators;
+use App\Models\Transaction;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 class CsvImport extends Component
@@ -81,12 +82,30 @@ class CsvImport extends Component
 //                $month = Carbon::createFromFormat('d-m-Y', $data[0])->format('m');
                 $iban = $data[3];
                 $name = $data[5];
+
+                $keywords = ['asbl', 'association', 'fondation'];
+
+                $isAssociation = false;
+                foreach ($keywords as $keyword) {
+                    if (str_contains(strtolower($name), $keyword)) {
+                        $isAssociation = true;
+                        break;
+                    }
+                }
+
+                if ($isAssociation) {
+                    continue;
+                }
+
                 $amount = str($data[2])->replace(',', '')->replace('.', '');
 
                 if (!empty($iban)) {
-                    $donor = Donators::updateOrCreate(
+                    $donor = Donators::firstOrCreate(
                         ['iban' => $iban],
-                        ['name' => $name]
+                        [
+                            'name' => $name,
+                            'email' => Str::slug($name, '.') . "@example.com"
+                        ]
                     );
 
                     $history = $donor->history ? json_decode($donor->history, true) : [];

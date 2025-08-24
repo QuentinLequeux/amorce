@@ -7,8 +7,15 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
+
+    <!-- Favicon -->
+
+    <link rel="icon" type="image/svg" href="{{ asset('favicon.svg') }}">
+    <link rel="apple-touch-icon" type="image/svg" href="{{ asset('favicon.svg') }}">
+    <link rel="apple-touch-icon-precomposed" type="image/svg" href="{{ asset('favicon.svg') }}">
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     @livewireStyles

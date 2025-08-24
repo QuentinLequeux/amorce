@@ -3,13 +3,14 @@
 namespace App\Livewire;
 
 use Hash;
-use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
+use Illuminate\Validation\Rules\Password;
 
 class Profile extends Component
 {
-    public $current_password;
     public $password;
+    public string $email;
+    public $current_password;
     public $password_confirmation;
 
     public function render()
@@ -31,5 +32,22 @@ class Profile extends Component
         ]);
 
         return $this->redirect(route('home'));
+    }
+
+    public function updateEmail()
+    {
+        $user = auth()->user();
+
+        $this->validate([
+            'email' => ['required', 'email']
+        ]);
+
+        $user->update([
+            'email' => $this->email
+        ]);
+
+        session()->flash('success', 'Votre adresse email a été modifiée.');
+
+        return $this->redirect(route('profile'));
     }
 }

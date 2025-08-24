@@ -20,17 +20,19 @@
 {{--    Fond sp&eacute;cifique--}}
 {{--</a>--}}
 @foreach(\App\Models\Fund::all() as $fund)
-    <label for="fund_{{ $fund->id }}" tabindex="0" class="cursor-pointer hover:text-yellow2 whitespace-nowrap">
-        {{ str($fund->name)->toHtmlString() }}
-    </label>
-    <input type="radio" id="fund_{{ $fund->id }}" value="{{ $fund->id }}" class="hidden" wire:model.live="currentFund">
+    <div>
+        <input type="radio" id="fund_{{ $fund->id }}" value="{{ $fund->id }}" class="hidden peer" wire:model.live="currentFund">
+        <label for="fund_{{ $fund->id }}" tabindex="0" class="cursor-pointer hover:text-yellow2 whitespace-nowrap peer-checked:border-b-2 peer-checked:border-yellow2" title="{{ str($fund->name)->toHtmlString() }}">
+            {{ str($fund->name)->toHtmlString() }}
+        </label>
+    </div>
 {{--    <button class="whitespace-nowrap"--}}
 {{--    title="Vers {{ $fund->name }}">--}}
 {{--        {{$fund->name}}--}}
 {{--    </button>--}}
 @endforeach
 @role('admin')
-    <button class="font-medium hover:text-yellow2 dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
+    <button title="Créer un fond" class="font-medium hover:text-yellow2 dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
         +&nbsp;Cr&eacute;er un fond
     </button>
 @endrole

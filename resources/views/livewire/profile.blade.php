@@ -16,9 +16,35 @@
                 </svg>
                 Profil
             </h1>
-            <div class="m-auto w-96">
-                <h3 class="font-bold mb-4 text-xl">
-                    Changer le mot de passe :
+            <div class="mx-auto w-96 my-10">
+                <h3 class="font-bold mb-4 text-xl" aria-level="3" role="heading">
+                    Adresse email
+                </h3>
+                <form class="flex flex-col" wire:submit.prevent="updateEmail()">
+                    @csrf
+                    <label class="mb-2" for="email">
+                        Email
+                    </label>
+                    <input required type="email" id="email" wire:model="email"
+                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-white p-2 border border-gray-400 max-sm:w-[300px]">
+                    @error('email')
+                    <x-error>
+                        {{ $message }}
+                    </x-error>
+                    @enderror
+                    @if(session()->has('success'))
+                        <p class="text-green-500">
+                            {{ session('success') }}
+                        </p>
+                    @endif
+                    <button type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold mt-4">
+                        Modifier
+                    </button>
+                </form>
+            </div>
+            <div class="mx-auto w-96">
+                <h3 class="font-bold mb-4 text-xl" aria-level="3" role="heading">
+                    Changer le mot de passe
                 </h3>
                 <p class="text-sm mb-4">
                     Votre mot de passe doit contenir minimum 8 caractères
@@ -29,7 +55,7 @@
                         Mot de passe actuel :
                     </label>
                     <input type="password"
-                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400"
+                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400 max-sm:w-[300px]"
                            wire:model="current_password"
                            id="current_password"
                            required>
@@ -42,7 +68,7 @@
                         Nouveau mot de passe :
                     </label>
                     <input type="password"
-                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400"
+                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400 max-sm:w-[300px]"
                            wire:model="password"
                            id="password"
                            required>
@@ -55,7 +81,7 @@
                         Confirmer le mot de passe :
                     </label>
                     <input type="password"
-                           class="mb-6 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400"
+                           class="mb-6 rounded bg-white dark:bg-gray-600 dark:text-black p-2 border border-gray-400 max-sm:w-[300px]"
                            wire:model="password_confirmation"
                            id="new_password"
                            required>
@@ -65,7 +91,7 @@
                     </x-error>
                     @enderror
                     <button type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold">
-                        Changer
+                        Modifier
                     </button>
                 </form>
             </div>
