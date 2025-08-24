@@ -1,4 +1,4 @@
-<div x-show="open" class="bg-gradient-to-t from-gray-950 inset-0 fixed h-screen w-screen z-10">
+<div dusk="modal-csv" x-show="open" class="bg-gradient-to-t from-gray-950 inset-0 fixed h-screen w-screen z-10">
     <div class="inset-0 fixed w-fit h-fit m-auto bg-white shadow-xl dark:text-black rounded"
          x-show="open"
          @click.away="open = false; $wire.set('csv', null); $wire.set('fileSize', null);"
@@ -19,6 +19,7 @@
             </label>
             <input
                 class="border-2 rounded file:px-4 file:py-2 file:border-0 file:font-semibold file:bg-yellow2 hover:file:bg-yellow"
+                dusk="csv-input"
                 type="file"
                 id="csv"
                 wire:model="csv"
@@ -37,7 +38,7 @@
                         @click="open = false; $wire.set('csv', null); $wire.set('fileSize', null);">
                     Annuler
                 </button>
-                <button type="submit" class="mt-2 bg-yellow2 px-10 py-2 text-black font-bold rounded-xl" @click="open = false">
+                <button dusk="csv-button" type="submit" class="mt-2 bg-yellow2 px-10 py-2 text-black font-bold rounded-xl" @click="open = false">
                     Envoyer
                 </button>
             </div>

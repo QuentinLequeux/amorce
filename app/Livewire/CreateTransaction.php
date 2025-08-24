@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Fund;
+use Livewire\Component;
 use App\Models\Transaction;
 use Livewire\Attributes\Validate;
-use Livewire\Component;
 
 class CreateTransaction extends Component
 {
@@ -62,7 +62,7 @@ class CreateTransaction extends Component
             'description' => $this->description,
             'donation_type' => $this->donation_type,
             'fund_id' => $this->fund_id,
-            'amount' => $this->amount,
+            'amount' => (int) round($this->amount * 100),
         ]);
 
         return redirect(route('finances'));

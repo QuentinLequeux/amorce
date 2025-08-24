@@ -29,7 +29,7 @@
                     Détente
                 </h2>
                 @role('admin')
-                    <button wire:click="confirm" class="bg-yellow2 px-6 py-2 rounded w-fit h-fit text-black m-auto mb-6">
+                    <button dusk="draw-button" wire:click="confirm" class="bg-yellow2 px-6 py-2 rounded w-fit h-fit text-black m-auto mb-6">
                         Tirage au sort
                     </button>
                 @endrole
