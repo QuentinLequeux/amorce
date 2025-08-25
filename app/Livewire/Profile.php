@@ -31,7 +31,9 @@ class Profile extends Component
         $user->update(['password' => Hash::make($this->password),
         ]);
 
-        return $this->redirect(route('home'));
+        session()->flash('success', 'Votre mot de passe a été modifié.');
+
+        return $this->redirect(route('profile'));
     }
 
     public function updateEmail()

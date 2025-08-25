@@ -8,7 +8,7 @@
         <livewire:csv-import/>
     </div>
     <div x-data="{ open: false }">
-        <button type="button" title="Ajouter une transaction" @click="open = ! open"
+        <button dusk="create-transaction" type="button" title="Ajouter une transaction" @click="open = ! open"
                 class="bg-yellow2 py-2 px-6 rounded text-black font-bold">
             Ajouter
         </button>
