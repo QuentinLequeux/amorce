@@ -47,3 +47,32 @@ test('user can add csv file', function () {
                 ->assertPathIs('/finances');
     });
 });
+
+test('user can add a transaction', function () {
+    Role::create(['name' => 'admin']);
+
+    $user = User::factory()->create([
+        'email' => 'quent690@yahoo.fr',
+        'password' => bcrypt('password'),
+    ]);
+
+    $user->assignRole('admin');
+
+    $this->browse(function (Browser $browser) use ($user) {
+        $browser->loginAs($user)
+                ->visit('/finances')
+                ->click('@create-transaction')
+                ->waitFor('@transaction-modal')
+                ->assertSeeIn('@transaction-modal', 'Ajouter')
+                ->type('date', '2025-08-25')
+                //->assertInputValue('date', '2025-08-25')
+                ->type('description', 'test')
+                ->select('donation_type', 'Liquide')
+                ->assertSelected('donation_type', 'Liquide')
+                ->select('fund_id', '2')
+                ->assertSelected('fund_id', '2')
+                ->type('amount', '10')
+                ->click('@button-transaction')
+                ->assertPathIs('/finances');
+    });
+});
