@@ -17,7 +17,10 @@ class Draw extends Component
         $lastDraw = $draws->first();
         $this->winners = $lastDraw ? json_decode($lastDraw->winners, true) : [];
         $this->history = $draws->skip(1)->map(function($draw) {
-           return json_decode($draw->winners, true);
+            return [
+              'date' => $draw->created_at->toDateString(),
+                'winners' => json_decode($draw->winners, true),
+            ];
         })->values();
 
         $user = auth()->user();

@@ -56,9 +56,9 @@
                     <ul class="space-y-4">
                         @foreach($history as $draws => $draw)
                             <li class="border rounded-xl p-6">
-                                <strong>Tirage #{{ count($history) - $draws }}</strong>
+                                <strong>D&eacute;tente du {{ \Carbon\Carbon::parse($draw['date'])->translatedFormat('d F Y') }}</strong>
                                 <ul class="mt-2">
-                                    @foreach($draw as $index => $winner)
+                                    @foreach($draw['winners'] as $index => $winner)
                                         <li>
                                            <a href="mailto:{{ $winner['email'] }}" title="Envoyer un email" class="hover:border-b-2 hover:border-yellow2">
                                                 {{ $index + 1 }}) {{ $winner['name'] }}
