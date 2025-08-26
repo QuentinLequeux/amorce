@@ -44,9 +44,11 @@
             </div>
         </div>
         <div class="flex justify-center mt-6 mb-2">
-            <x-button>Envoyer</x-button>
+            <button title="Envoyer" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
+                Envoyer
+            </button>
         </div>
-        <a class="flex justify-center" href="/login" title="">
+        <a class="flex justify-center" href="/login" title="Retour">
             Retour
         </a>
     </form>

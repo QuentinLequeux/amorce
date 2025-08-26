@@ -34,11 +34,11 @@
             </x-error>
             @enderror
             <div class="text-center">
-                <button type="button" class="font-bold border px-10 mt-2 rounded-xl py-2 border-black"
+                <button type="button" title="Annuler" class="font-bold border px-10 mt-2 rounded-xl py-2 border-black"
                         @click="open = false; $wire.set('csv', null); $wire.set('fileSize', null);">
                     Annuler
                 </button>
-                <button dusk="csv-button" type="submit" class="mt-2 bg-yellow2 px-10 py-2 text-black font-bold rounded-xl" @click="open = false">
+                <button dusk="csv-button" title="Envoyer" type="submit" class="mt-2 bg-yellow2 px-10 py-2 text-black font-bold rounded-xl" @click="open = false">
                     Envoyer
                 </button>
             </div>

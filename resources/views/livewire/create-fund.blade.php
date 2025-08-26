@@ -29,11 +29,11 @@
                         @enderror
                     </div>
                     <div class="text-center">
-                        <button class="px-10 py-2 rounded-xl border border-black font-bold"
+                        <button title="Annuler" class="px-10 py-2 rounded-xl border border-black font-bold"
                                 @click="open = false">
                             Annuler
                         </button>
-                        <button dusk="confirm-button" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
+                        <button title="Créer" dusk="confirm-button" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
                             Cr&eacute;er
                         </button>
                     </div>

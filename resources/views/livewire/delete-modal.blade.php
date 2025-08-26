@@ -18,10 +18,10 @@
                     Êtes vous sur de vouloir supprimer&nbsp;?
                 </p>
                 <div class="flex justify-center gap-6">
-                    <button class="px-6 py-2 rounded border border-black font-bold" wire:click="$set('show', false)">
+                    <button title="Annuler" class="px-6 py-2 rounded border border-black font-bold" wire:click="$set('show', false)">
                         Annuler
                     </button>
-                    <button class="px-6 py-2 bg-error rounded text-white font-bold" wire:click="destroy">
+                    <button title="Supprimer" class="px-6 py-2 bg-error rounded text-white font-bold" wire:click="destroy">
                         Supprimer
                     </button>
                 </div>

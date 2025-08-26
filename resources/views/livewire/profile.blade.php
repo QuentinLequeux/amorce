@@ -37,7 +37,7 @@
                         {{ $message }}
                     </x-error>
                     @enderror
-                    <button dusk="modify-email" type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold mt-4">
+                    <button dusk="modify-email" title="Modifier" type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold mt-4">
                         Modifier
                     </button>
                 </form>
@@ -93,7 +93,7 @@
                         {{ $message }}
                     </x-error>
                     @enderror
-                    <button dusk="modify-password" type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold">
+                    <button dusk="modify-password" title="Modifier" type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold">
                         Modifier
                     </button>
                 </form>

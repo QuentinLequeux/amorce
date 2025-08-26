@@ -90,13 +90,13 @@
                     </x-error>
                     @enderror
                     <div>
-                        <button type="button" class="py-2 px-10 border border-black rounded-xl font-bold"
+                        <button type="button" title="Annuler" class="py-2 px-10 border border-black rounded-xl font-bold"
                                 wire:click="$set('show', false)">
                             Annuler
                         </button>
-                        <x-button>
+                        <button class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" title="Modifier" type="submit">
                             Modifier
-                        </x-button>
+                        </button>
                     </div>
                 </form>
             </div>

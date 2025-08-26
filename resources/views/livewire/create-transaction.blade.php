@@ -88,11 +88,11 @@
             </x-error>
             @enderror
             <div>
-                <button type="button" class="px-10 mt-2 rounded-xl border py-2 font-bold border-black"
+                <button type="button" title="Annuler" class="px-10 mt-2 rounded-xl border py-2 font-bold border-black"
                         @click="open = false">
                     Annuler
                 </button>
-                <button dusk="button-transaction" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
+                <button dusk="button-transaction" title="Ajouter" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
                     Ajouter
                 </button>
             </div>
