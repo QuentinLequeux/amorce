@@ -29,7 +29,7 @@
                         @enderror
                     </div>
                     <div class="text-center">
-                        <button title="Annuler" class="px-10 py-2 rounded-xl border border-black font-bold"
+                        <button type="button" title="Annuler" class="px-10 py-2 rounded-xl border border-black font-bold"
                                 @click="open = false">
                             Annuler
                         </button>

@@ -37,8 +37,8 @@
                     <ul>
                         @foreach($winners as $index => $winner)
                             <li>
-                                <a href="mailto:{{ $winner['email'] }}" title="Envoyer un email" class="hover:border-b-2 hover:border-yellow2">
-                                {{ $index + 1 }}){{ $winner['name'] }}
+                                <a href="mailto:{{ $winner['email'] }}" title="Envoyer un email à {{ $winner['email'] }}" class="hover:border-b-2 hover:border-yellow2">
+                                {{ $winner['name'] }}
 {{--                                <button wire:click="individual" class="bg-yellow2 px-4 py-2 text-black rounded mb-2">--}}
 {{--                                    Tirage individuel--}}
 {{--                                </button>--}}
