@@ -102,6 +102,6 @@ class EditTransaction extends Component
         $this->description = $this->transaction->description;
         $this->donation_type = $this->transaction->donation_type;
         $this->fund_id = $this->transaction->fund_id;
-        $this->amount = $this->transaction->amount;
+        $this->amount = $this->transaction->amount / 100;
     }
 }
