@@ -13,19 +13,38 @@ class Draw extends Component
 
     public function render()
     {
-        $draws = \App\Models\Draw::latest()->get();
-        $lastDraw = $draws->first();
-        $this->winners = $lastDraw ? json_decode($lastDraw->winners, true) : [];
-        $this->history = $draws->skip(1)->map(function($draw) {
+        $draws = \App\Models\Draw::orderBy('created_at')->get();
+
+        $participationsByDraw = [];
+        $counters = [];
+
+        foreach ($draws as $draw) {
+            $winners = json_decode($draw->winners, true);
+
+            $participationsByDraw[$draw->id] = [];
+
+            foreach ($winners as $winner) {
+                $email = $winner['email'];
+                $counters[$email] = ($counters[$email] ?? 0) + 1;
+                $participationsByDraw[$draw->id][$email] = $counters[$email];
+            }
+        }
+
+        $this->winners = $draws->last() ? json_decode($draws->last()->winners, true) : [];
+        $this->history = $draws->reverse()->skip(1)->map(function ($draw) {
             return [
-              'date' => $draw->created_at->toDateString(),
+                'id' => $draw->id,
+                'date' => $draw->created_at->toDateString(),
                 'winners' => json_decode($draw->winners, true),
             ];
         })->values();
 
         $user = auth()->user();
 
-        return view('livewire.draw', compact('user'));
+        return view('livewire.draw', [
+            'user' => $user,
+            'participationsByDraw' => $participationsByDraw
+        ]);
     }
 
     #[On('randomDraw')]
@@ -62,6 +81,32 @@ class Draw extends Component
         })->toArray();
 
         shuffle($models);
+
+        $pastDraws = \App\Models\Draw::orderBy('created_at')->get();
+
+        $participations = [];
+        foreach ($pastDraws as $draw) {
+            foreach (json_decode($draw->winners, true) as $winner) {
+                $participations[$winner['email']][] = $draw->created_at;
+            }
+        }
+
+        $models = array_filter($models, function ($model) use ($participations) {
+            $email = $model['email'];
+
+            if (!isset($participations[$email])) {
+                return true;
+            }
+
+            $count = count($participations[$email]);
+            if ($count < 3) {
+                return true;
+            }
+
+            $thirdParticipationDate = $participations[$email][2];
+
+            return \Carbon\Carbon::parse($thirdParticipationDate)->addYear()->isPast();
+        });
 
         $tirageCount = \App\Models\Draw::count();
         $groupToReplace = ($tirageCount % 3) * 3;
@@ -106,7 +151,8 @@ class Draw extends Component
 
     public function hasConsecutiveMonths(array $history): bool
     {
-        if (count($history) < 2) {
+        // Nombre de mois consécutifs
+        if (count($history) < 3) {
             return false;
         }
 
