@@ -34,3 +34,18 @@ test('user can update his email', function () {
                 ->assertPathIs('/profile');
     });
 });
+
+test('user can update his name', function () {
+    $user = User::factory()->create([
+        'email' => 'quent690@yahoo.fr',
+        'password' => bcrypt('password'),
+    ]);
+
+    $this->browse(function (Browser $browser) use ($user) {
+        $browser->loginAs($user)
+            ->visit('/profile')
+            ->type('name', 'Test')
+            ->click('@modify-name')
+            ->assertPathIs('/profile');
+    });
+});

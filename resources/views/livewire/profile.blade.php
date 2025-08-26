@@ -16,12 +16,33 @@
                 </svg>
                 Profil
             </h1>
-            <div class="mx-auto w-96 my-10">
+            <div class="mx-auto w-96 mt-10">
                 @if(session()->has('success'))
                     <p class="text-green-500">
                         {{ session('success') }}
                     </p>
                 @endif
+                <h3 class="font-bold mb-4 text-xl" aria-level="3" role="heading">
+                    Nom
+                </h3>
+                <form class="flex flex-col" wire:submit.prevent="updateName()">
+                    @csrf
+                    <label class="mb-2" for="name">
+                        Nom
+                    </label>
+                    <input type="text" id="name" name="name" wire:model="name" required
+                           class="mb-2 rounded bg-white dark:bg-gray-600 dark:text-white p-2 border border-gray-400 max-sm:w-[300px]">
+                    @error('name')
+                    <x-error>
+                        {{ $message }}
+                    </x-error>
+                    @enderror
+                    <button dusk="modify-name" title="Modifier" type="submit" class="bg-yellow2 rounded w-28 text-black py-2 font-semibold mt-4">
+                        Modifier
+                    </button>
+                </form>
+            </div>
+            <div class="mx-auto w-96 my-10">
                 <h3 class="font-bold mb-4 text-xl" aria-level="3" role="heading">
                     Adresse email
                 </h3>

@@ -8,6 +8,7 @@ use Illuminate\Validation\Rules\Password;
 
 class Profile extends Component
 {
+    public $name;
     public $password;
     public string $email;
     public $current_password;
@@ -49,6 +50,23 @@ class Profile extends Component
         ]);
 
         session()->flash('success', 'Votre adresse email a été modifiée.');
+
+        return $this->redirect(route('profile'));
+    }
+
+    public function updateName()
+    {
+        $user = auth()->user();
+
+        $this->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        $user->update([
+            'name' => $this->name
+        ]);
+
+        session()->flash('success', 'Votre nom a été modifié.');
 
         return $this->redirect(route('profile'));
     }
