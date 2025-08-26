@@ -1,5 +1,5 @@
 <div x-show="open" class="bg-gradient-to-t from-gray-950 w-screen h-screen inset-0 fixed z-10">
-    <div class="p-10 shadow-xl h-fit fixed inset-0 w-fit z-10 m-auto bg-white dark:text-black rounded-xl"
+    <div dusk="transaction-modal" class="p-10 shadow-xl h-fit fixed inset-0 w-fit z-10 m-auto bg-white dark:text-black rounded-xl"
          x-show="open"
          @click.away="open = false"
          x-transition:enter="transition-transform transition-opacity ease-out duration-300"
@@ -20,6 +20,7 @@
             <input class="border rounded mt-2 p-2"
                    type="date"
                    id="date"
+                   name="date"
                    wire:model.defer="date"
                    required>
             <x-label for="description">
@@ -28,6 +29,7 @@
             <input class="border rounded mt-2 p-2"
                    type="text"
                    id="description"
+                   name="description"
                    wire:model.defer="description"
                    placeholder="Ex : don en liquide"
                    required>
@@ -41,11 +43,14 @@
             </x-label>
             <select class="p-2 mt-2 rounded border"
                     id="donation_type"
+                    name="donation_type"
                     wire:model.defer="donation_type"
                     required>
                 <option>--S&eacute;lectionner--</option>
                 @foreach(\App\Enums\DonationType::cases() as $donationType)
-                    <option value="{{ $donationType->value }}">{{ $donationType->value }}</option>
+                    @if($donationType !== \App\Enums\DonationType::Transfert)
+                        <option value="{{ $donationType->value }}">{{ $donationType->value }}</option>
+                    @endif
                 @endforeach
             </select>
             <x-label for="fund_id">
@@ -53,6 +58,7 @@
             </x-label>
             <select class="p-2 mt-2 rounded border"
                     id="fund_id"
+                    name="fund_id"
                     wire:model.defer="fund_id"
                     required>
                 <option>--S&eacute;lectionner--</option>
@@ -67,9 +73,10 @@
                 <input class="border rounded mt-2 p-2 w-full mb-2"
                        type="number"
                        id="amount"
+                       name="amount"
                        wire:model.defer="amount"
-                       placeholder="20.00€"
-                       {{--                       step=".01"--}}
+                       placeholder="20€"
+                       step=".01"
                        required>
                 <span class="absolute right-10 top-1/3">
                     €
@@ -81,13 +88,13 @@
             </x-error>
             @enderror
             <div>
-                <button type="button" class="px-10 mt-2 rounded-xl border py-2 font-bold border-black"
+                <button type="button" title="Annuler" class="px-10 mt-2 rounded-xl border py-2 font-bold border-black"
                         @click="open = false">
                     Annuler
                 </button>
-                <x-button>
+                <button dusk="button-transaction" title="Ajouter" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
                     Ajouter
-                </x-button>
+                </button>
             </div>
         </form>
     </div>

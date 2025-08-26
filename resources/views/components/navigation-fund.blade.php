@@ -32,7 +32,7 @@
 {{--    </button>--}}
 @endforeach
 @role('admin')
-    <button title="Créer un fond" class="font-medium hover:text-yellow2 dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
+    <button dusk="create-button" title="Créer un fond" class="font-medium hover:text-yellow2 dark:hover:text-yellow2 whitespace-nowrap" wire:click="$dispatch('visibleModal')">
         +&nbsp;Cr&eacute;er un fond
     </button>
 @endrole

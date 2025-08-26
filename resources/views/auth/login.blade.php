@@ -61,9 +61,11 @@
             <span>Remember&nbsp;me</span>
         </label>
         <div class="flex justify-center mt-6 mb-4">
-            <x-button>Login</x-button>
+            <button title="Connexion" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
+                Connexion
+            </button>
         </div>
-        <a class="flex justify-center" href="/forgot-password" title="">
+        <a class="flex justify-center" href="/forgot-password" title="Mot de passe oublié">
             Mot de passe oubli&eacute;&nbsp;?
         </a>
     </form>

@@ -1,3 +1,6 @@
+@php
+    $isTransfer = $donation_type === \App\Enums\DonationType::Transfert->value;
+@endphp
 <div>
     @if($show)
         <div x-data="{ open: @entangle('show') }"
@@ -63,7 +66,8 @@
                         <select class="p-2 mt-2 rounded border"
                                 id="fund_type"
                                 wire:model.change="fund_id"
-                                required>
+                                required
+                                @unless($isTransfer) disabled @endunless>
                             <option>--S&eacute;lectionner--</option>
                             @foreach($funds as $fund)
                                 <option value="{{ $fund->id }}">{{ $fund->name }}</option>
@@ -90,13 +94,13 @@
                     </x-error>
                     @enderror
                     <div>
-                        <button type="button" class="py-2 px-10 border border-black rounded-xl font-bold"
+                        <button type="button" title="Annuler" class="py-2 px-10 border border-black rounded-xl font-bold"
                                 wire:click="$set('show', false)">
                             Annuler
                         </button>
-                        <x-button>
+                        <button class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" title="Modifier" type="submit">
                             Modifier
-                        </x-button>
+                        </button>
                     </div>
                 </form>
             </div>

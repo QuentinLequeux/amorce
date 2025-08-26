@@ -1,6 +1,6 @@
 <div>
     @if($show)
-        <div class="fixed inset-0 flex justify-center items-center w-screen h-screen bg-gradient-to-t from-gray-950"
+        <div dusk="create-modal" class="fixed inset-0 flex justify-center items-center w-screen h-screen bg-gradient-to-t from-gray-950"
              x-data="{ open: @entangle('show')}"
              x-show="open">
             <div class="bg-white p-8 w-96 rounded self-center"
@@ -16,6 +16,7 @@
                             Nom&nbsp;<x-mandatory/>
                         </x-label>
                         <input class="p-2 border-2 rounded my-2"
+                               name="name"
                                type="text"
                                wire:model="name"
                                id="name"
@@ -28,13 +29,13 @@
                         @enderror
                     </div>
                     <div class="text-center">
-                        <button class="px-10 py-2 rounded-xl border border-black font-bold"
+                        <button title="Annuler" class="px-10 py-2 rounded-xl border border-black font-bold"
                                 @click="open = false">
                             Annuler
                         </button>
-                        <x-button>
+                        <button title="Créer" dusk="confirm-button" class="mt-2 bg-yellow2 px-10 py-2 rounded-xl text-black font-bold" type="submit">
                             Cr&eacute;er
-                        </x-button>
+                        </button>
                     </div>
                 </form>
             </div>

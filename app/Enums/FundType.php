@@ -8,5 +8,5 @@ enum FundType: string
 
     case OperatingFund = 'Fond de fonctionnement';
 
-    case SpecificFund = 'Fond spécifique';
+    //case SpecificFund = 'Fond spécifique';
 }
