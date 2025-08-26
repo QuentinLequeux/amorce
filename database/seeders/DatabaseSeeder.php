@@ -2,15 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Enums\FundType;
-use App\Models\Donators;
 use App\Models\Draw;
 use App\Models\Fund;
-use App\Models\Transaction;
 use App\Models\User;
-use Database\Factories\DonatorsFactory;
+use App\Enums\FundType;
+use App\Models\Donators;
+use App\Models\Transaction;
 use Illuminate\Database\Seeder;
-
+use Database\Factories\DonatorsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -23,15 +22,15 @@ class DatabaseSeeder extends Seeder
         $this->call([RolesAndPermissionsSeeder::class]);
 
         User::factory()->create([
-            'name' => 'Quentin',
-            'email' => 'quentin.lequeux@student.hepl.be',
+            'name' => 'Dominique',
+            'email' => 'dominique.vilain@hepl.be',
         ])->each(function ($user) {
             $user->assignRole('admin');
         });
 
         User::factory()->create([
-            'name' => 'Nicolas',
-            'email' => 'quent789@gmail.com',
+            'name' => 'Quentin',
+            'email' => 'quentin.lequeux@student.hepl.be',
         ])->each(function ($user) {
             $user->assignRole('user');
         });
