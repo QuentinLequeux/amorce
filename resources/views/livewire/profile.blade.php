@@ -119,6 +119,17 @@
                     </button>
                 </form>
             </div>
+            <div class="mx-auto w-96 mt-4">
+                <h3 class="mb-4 font-bold text-xl" aria-level="3" role="heading">
+                    Supprimer le compte
+                </h3>
+                <form class="flex flex-col" wire:submit.prevent="delete()">
+                    @csrf
+                    <button type="button" title="Supprimer le compte" class="bg-red-500 rounded py-2 font-semibold text-white" wire:click="delete()" wire:confirm="Êtes-vous sûr de vouloir supprimer votre compte ?">
+                        Supprimer le compte
+                    </button>
+                </form>
+            </div>
         </div>
     </main>
 </div>

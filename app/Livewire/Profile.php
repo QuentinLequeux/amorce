@@ -70,4 +70,13 @@ class Profile extends Component
 
         return $this->redirect(route('profile'));
     }
+
+    public function delete()
+    {
+        $user = auth()->user();
+
+        $user->delete();
+
+        return redirect()->route('login');
+    }
 }
